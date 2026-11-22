@@ -3,3 +3,4 @@ test-results/
 playwright-report/
 .auth/
 test-results.json
+test-results.xml

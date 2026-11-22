@@ -1,0 +1,382 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: guest\booking.spec.js >> Guest booking >> AT-04b every guest form message names the field it is about @known-defect
+- Location: tests\guest\booking.spec.js:57:3
+
+# Error details
+
+```
+Error: an error message should mention /email/i
+
+expect(received).toMatch(expected)
+
+Expected pattern: /email/i
+Received string:  "Firstname should not be blank
+Lastname should not be blank
+size must be between 3 and 18
+size must be between 3 and 30
+must not be empty
+size must be between 11 and 21
+must not be empty"
+```
+
+# Page snapshot
+
+```yaml
+- generic [ref=e1]:
+  - generic [ref=e3]:
+    - navigation [ref=e4]:
+      - generic [ref=e5]:
+        - link "Shady Meadows B&B" [ref=e6] [cursor=pointer]:
+          - /url: /
+        - list [ref=e9]:
+          - listitem [ref=e10]:
+            - link "Rooms" [ref=e11] [cursor=pointer]:
+              - /url: /#rooms
+          - listitem [ref=e12]:
+            - link "Booking" [ref=e13] [cursor=pointer]:
+              - /url: /#booking
+          - listitem [ref=e14]:
+            - link "Amenities" [ref=e15] [cursor=pointer]:
+              - /url: /#amenities
+          - listitem [ref=e16]:
+            - link "Location" [ref=e17] [cursor=pointer]:
+              - /url: /#location
+          - listitem [ref=e18]:
+            - link "Contact" [ref=e19] [cursor=pointer]:
+              - /url: /#contact
+          - listitem [ref=e20]:
+            - link "Admin" [ref=e21] [cursor=pointer]:
+              - /url: /admin
+    - navigation "breadcrumb" [ref=e24]:
+      - list [ref=e25]:
+        - listitem [ref=e26]:
+          - link "Home" [ref=e27] [cursor=pointer]:
+            - /url: /
+        - listitem [ref=e28]:
+          - text: /
+          - link "Rooms" [ref=e29] [cursor=pointer]:
+            - /url: "#"
+        - listitem [ref=e30]: / Single Room
+    - generic [ref=e32]:
+      - generic [ref=e33]:
+        - generic [ref=e34]:
+          - heading "Single Room" [level=1] [ref=e35]
+          - generic [ref=e36]:
+            - generic [ref=e37]: Accessible
+            - generic [ref=e39]:
+              - generic [ref=e40]: 
+              - text: Max 2 Guests
+        - img "Room Image" [ref=e44]
+        - generic [ref=e45]:
+          - heading "Room Description" [level=2] [ref=e46]
+          - paragraph [ref=e47]: Aenean porttitor mauris sit amet lacinia molestie. In posuere accumsan aliquet. Maecenas sit amet nisl massa. Interdum et malesuada fames ac ante.
+        - generic [ref=e48]:
+          - heading "Room Features" [level=2] [ref=e49]
+          - generic [ref=e50]:
+            - generic [ref=e52]:
+              - generic [ref=e53]: 
+              - generic [ref=e54]: TV
+            - generic [ref=e56]:
+              - generic [ref=e57]: 
+              - generic [ref=e58]: WiFi
+            - generic [ref=e60]:
+              - generic [ref=e61]: 
+              - generic [ref=e62]: Safe
+        - generic [ref=e63]:
+          - heading "Room Policies" [level=2] [ref=e64]
+          - generic [ref=e65]:
+            - generic [ref=e68]:
+              - heading "Check-in & Check-out" [level=3] [ref=e69]
+              - list [ref=e70]:
+                - listitem [ref=e71]:
+                  - generic [ref=e72]: 
+                  - generic [ref=e73]:
+                    - strong [ref=e74]: "Check-in:"
+                    - text: 3:00 PM - 8:00 PM
+                - listitem [ref=e75]:
+                  - generic [ref=e76]: 
+                  - generic [ref=e77]:
+                    - strong [ref=e78]: "Check-out:"
+                    - text: By 11:00 AM
+                - listitem [ref=e79]:
+                  - generic [ref=e80]: 
+                  - generic [ref=e81]:
+                    - strong [ref=e82]: "Early/Late:"
+                    - text: By arrangement
+            - generic [ref=e85]:
+              - heading "House Rules" [level=3] [ref=e86]
+              - list [ref=e87]:
+                - listitem [ref=e88]:
+                  - generic [ref=e89]: 
+                  - generic [ref=e90]: No smoking
+                - listitem [ref=e91]:
+                  - generic [ref=e92]: 
+                  - generic [ref=e93]: No parties or events
+                - listitem [ref=e94]:
+                  - generic [ref=e95]: 
+                  - generic [ref=e96]: Pets allowed (restrictions apply)
+      - generic [ref=e99]:
+        - heading "Book This Room" [level=2] [ref=e100]
+        - generic [ref=e101]:
+          - generic [ref=e102]: £100
+          - generic [ref=e103]: per night
+        - generic [ref=e104]:
+          - generic [ref=e105]:
+            - generic [ref=e106]: 
+            - textbox "Firstname" [ref=e108]
+          - generic [ref=e109]:
+            - generic [ref=e110]: 
+            - textbox "Lastname" [ref=e112]
+          - generic [ref=e113]:
+            - generic [ref=e114]: 
+            - textbox "Email" [ref=e116]
+          - generic [ref=e117]:
+            - generic [ref=e118]: 
+            - textbox "Phone" [ref=e120]
+          - alert [ref=e121]:
+            - list [ref=e122]:
+              - listitem [ref=e123]: Firstname should not be blank
+              - listitem [ref=e124]: Lastname should not be blank
+              - listitem [ref=e125]: size must be between 3 and 18
+              - listitem [ref=e126]: size must be between 3 and 30
+              - listitem [ref=e127]: must not be empty
+              - listitem [ref=e128]: size must be between 11 and 21
+              - listitem [ref=e129]: must not be empty
+          - generic [ref=e131]:
+            - heading "Price Summary" [level=3] [ref=e132]
+            - generic [ref=e133]:
+              - generic [ref=e134]: £100 x 2 nights
+              - generic [ref=e135]: £200
+            - generic [ref=e136]:
+              - generic [ref=e137]: Cleaning fee
+              - generic [ref=e138]: £25
+            - generic [ref=e139]:
+              - generic [ref=e140]: Service fee
+              - generic [ref=e141]: £15
+            - separator [ref=e142]
+            - generic [ref=e143]:
+              - generic [ref=e144]: Total
+              - generic [ref=e145]: £240
+          - button "Reserve Now" [active] [ref=e146] [cursor=pointer]
+          - button "Cancel" [ref=e147] [cursor=pointer]
+    - generic [ref=e149]:
+      - heading "Similar Rooms You Might Like" [level=2] [ref=e150]
+      - generic [ref=e151]:
+        - generic [ref=e153]:
+          - img "Double" [ref=e154]
+          - generic [ref=e155]:
+            - heading "Double" [level=3] [ref=e156]
+            - generic [ref=e157]:
+              - generic [ref=e158]: 
+              - generic [ref=e159]: 2 Guests
+              - generic [ref=e160]:
+                - generic [ref=e161]: £150
+                - text: /night
+            - paragraph [ref=e162]: Vestibulum sollicitudin, lectus ac mollis consequat, lorem orci ultrices tellus, eleifend euismod tortor dui egestas erat. Phasellus et ipsum nisl.
+            - link "View Details" [ref=e163] [cursor=pointer]:
+              - /url: /reservation/2?checkin=2035-07-06&checkout=2035-07-08
+        - generic [ref=e165]:
+          - img "Suite" [ref=e166]
+          - generic [ref=e167]:
+            - heading "Suite" [level=3] [ref=e168]
+            - generic [ref=e169]:
+              - generic [ref=e170]: 
+              - generic [ref=e171]: 2 Guests
+              - generic [ref=e172]:
+                - generic [ref=e173]: £225
+                - text: /night
+            - paragraph [ref=e174]: Etiam metus metus, fringilla ac sagittis id, consequat vel neque. Nunc commodo quis nisl nec posuere. Etiam at accumsan ex.
+            - link "View Details" [ref=e175] [cursor=pointer]:
+              - /url: /reservation/3?checkin=2035-07-06&checkout=2035-07-08
+        - generic [ref=e177]:
+          - img "Family" [ref=e178]
+          - generic [ref=e179]:
+            - heading "Family" [level=3] [ref=e180]
+            - generic [ref=e181]:
+              - generic [ref=e182]: 
+              - generic [ref=e183]: 2 Guests
+              - generic [ref=e184]:
+                - generic [ref=e185]: £200
+                - text: /night
+            - paragraph [ref=e186]: Please enter a description for this room
+            - link "View Details" [ref=e187] [cursor=pointer]:
+              - /url: /reservation/4?checkin=2035-07-06&checkout=2035-07-08
+    - contentinfo [ref=e188]:
+      - generic [ref=e189]:
+        - generic [ref=e190]:
+          - generic [ref=e191]:
+            - heading "Shady Meadows B&B" [level=5] [ref=e192]
+            - paragraph [ref=e193]: Welcome to Shady Meadows, a delightful Bed & Breakfast nestled in the hills on Newingtonfordburyshire. A place so beautiful you will never want to leave. All our rooms have comfortable beds and we provide breakfast from the locally sourced supermarket. It is a delightful place.
+            - generic [ref=e194]:
+              - link "" [ref=e195] [cursor=pointer]:
+                - /url: "#"
+              - link "" [ref=e197] [cursor=pointer]:
+                - /url: "#"
+              - link "" [ref=e199] [cursor=pointer]:
+                - /url: "#"
+          - generic [ref=e201]:
+            - heading "Contact Us" [level=5] [ref=e202]
+            - list [ref=e203]:
+              - listitem [ref=e204]:
+                - generic [ref=e205]: 
+                - text: Shady Meadows B&B, Shadows valley, Newingtonfordburyshire, Dilbery, N1 1AA
+              - listitem [ref=e206]:
+                - generic [ref=e207]: 
+                - text: "012345678901"
+              - listitem [ref=e208]:
+                - generic [ref=e209]: 
+                - text: fake@fakeemail.com
+          - generic [ref=e210]:
+            - heading "Quick Links" [level=5] [ref=e211]
+            - list [ref=e212]:
+              - listitem [ref=e213]:
+                - link "Home" [ref=e214] [cursor=pointer]:
+                  - /url: "#"
+              - listitem [ref=e215]:
+                - link "Rooms" [ref=e216] [cursor=pointer]:
+                  - /url: "#"
+              - listitem [ref=e217]:
+                - link "Booking" [ref=e218] [cursor=pointer]:
+                  - /url: "#"
+              - listitem [ref=e219]:
+                - link "Contact" [ref=e220] [cursor=pointer]:
+                  - /url: "#"
+        - separator [ref=e221]
+        - generic [ref=e223]:
+          - text: restful-booker-platform v2.2 Created by
+          - link "Mark Winteringham" [ref=e224] [cursor=pointer]:
+            - /url: http://www.mwtestconsultancy.co.uk
+          - text: "- © 2019-26"
+          - link "Cookie-Policy" [ref=e225] [cursor=pointer]:
+            - /url: /cookie
+          - text: "-"
+          - link "Privacy-Policy" [ref=e226] [cursor=pointer]:
+            - /url: /privacy
+          - text: "-"
+          - link "Admin panel" [ref=e227] [cursor=pointer]:
+            - /url: /admin
+  - generic [ref=e232] [cursor=pointer]:
+    - button "Open Next.js Dev Tools" [ref=e233]
+    - generic [ref=e237]:
+      - button "Open issues overlay" [ref=e238]:
+        - generic [ref=e239]:
+          - generic [aria-hidden] [ref=e240]: "0"
+          - generic [ref=e241]: "1"
+        - generic [ref=e242]: Insight
+      - button "Collapse issues badge" [ref=e243]
+  - alert [ref=e246]
+```
+
+# Test source
+
+```ts
+  1   | const { test, expect } = require('@playwright/test');
+  2   | const { knownDefect } = require('../support/known');
+  3   | const { HomePage, ReservationPage } = require('../support/pages');
+  4   | const { tag, futureRange, guest } = require('../support/data');
+  5   | const { createBooking, cleanup } = require('../support/api');
+  6   | 
+  7   | const ROOM = 1; // Single, £100 per night
+  8   | 
+  9   | test.describe('Guest booking', () => {
+  10  |   let t;
+  11  |   test.beforeEach(() => { t = tag(); });
+  12  |   test.afterEach(async ({ request }) => { await cleanup(request, t); });
+  13  | 
+  14  |   test('AT-02 guest searches, books a room and sees the confirmation @smoke', async ({ page }) => {
+  15  |     const { checkin, checkout } = futureRange(2);
+  16  |     const home = new HomePage(page);
+  17  |     await home.goto();
+  18  |     await home.search(checkin, checkout);
+  19  | 
+  20  |     await expect(home.bookLinks.first()).toHaveAttribute('href', new RegExp(`checkin=${checkin}&checkout=${checkout}`));
+  21  |     await home.bookLinks.first().click();
+  22  |     await expect(page).toHaveURL(/\/reservation\/1\?/);
+  23  | 
+  24  |     const reservation = new ReservationPage(page);
+  25  |     await reservation.reserve(guest(t));
+  26  | 
+  27  |     await expect(page.getByText('Booking Confirmed')).toBeVisible();
+  28  |     await expect(page.getByText(`${checkin} - ${checkout}`)).toBeVisible();
+  29  |   });
+  30  | 
+  31  |   test('AT-03 price summary adds nights, cleaning fee and service fee', async ({ page }) => {
+  32  |     const { checkin, checkout } = futureRange(3);
+  33  |     const reservation = new ReservationPage(page);
+  34  |     await reservation.goto(ROOM, checkin, checkout);
+  35  | 
+  36  |     await expect(page.getByText('£100 x 3 nights')).toBeVisible();
+  37  |     await expect(page.getByText('£300', { exact: true })).toBeVisible();
+  38  |     await expect(page.getByText('£25', { exact: true })).toBeVisible();
+  39  |     await expect(page.getByText('£15', { exact: true })).toBeVisible();
+  40  |     await expect(page.getByText('£340', { exact: true })).toBeVisible(); // 300 + 25 + 15
+  41  |   });
+  42  | 
+  43  |   test('AT-04 empty guest form shows a message for every field', async ({ page }) => {
+  44  |     const { checkin, checkout } = futureRange(2);
+  45  |     const reservation = new ReservationPage(page);
+  46  |     await reservation.goto(ROOM, checkin, checkout);
+  47  |     await reservation.openGuestForm();
+  48  |     await reservation.submit();
+  49  | 
+  50  |     // The form is not submitted and errors are shown (their wording is checked in AT-04b)
+  51  |     await expect(page.locator('.alert')).toBeVisible();
+  52  |     await expect(page.locator('.alert')).toContainText(/Firstname should not be blank/i);
+  53  |     await expect(page.getByText('Booking Confirmed')).toHaveCount(0);
+  54  |   });
+  55  | 
+  56  |   // UI-07: messages are unlabelled, in one box, in a different order to the form
+  57  |   test('AT-04b every guest form message names the field it is about @known-defect', async ({ page }) => {
+  58  |     knownDefect(test, 'UI-07: messages such as "size must be between 11 and 21" and "must not be empty" do not name their field');
+  59  |     const { checkin, checkout } = futureRange(2);
+  60  |     const reservation = new ReservationPage(page);
+  61  |     await reservation.goto(ROOM, checkin, checkout);
+  62  |     await reservation.openGuestForm();
+  63  |     await reservation.submit();
+  64  | 
+  65  |     const text = await page.locator('.alert').innerText();
+  66  |     for (const field of [/first ?name/i, /last ?name/i, /email/i, /phone/i]) {
+> 67  |       expect(text, `an error message should mention ${field}`).toMatch(field);
+      |                                                                ^ Error: an error message should mention /email/i
+  68  |     }
+  69  |   });
+  70  | 
+  71  |   // UI-01: a second booking for taken dates crashes the page
+  72  |   test('AT-05 booking dates that are already taken shows a clear message @known-defect', async ({ page, request }) => {
+  73  |     knownDefect(test, 'UI-01: the page crashes ("This page couldn\'t load") instead of showing a message');
+  74  |     const { checkin, checkout } = futureRange(2);
+  75  |     const first = await createBooking(request, { roomid: ROOM, checkin, checkout, lastname: t });
+  76  |     expect(first.status()).toBe(201);
+  77  | 
+  78  |     const reservation = new ReservationPage(page);
+  79  |     await reservation.goto(ROOM, checkin, checkout);
+  80  |     const bookingResponse = page.waitForResponse((r) => r.url().includes('/api/booking') && r.request().method() === 'POST');
+  81  |     await reservation.reserve(guest(t));
+  82  |     expect((await bookingResponse).status()).toBe(409); // the API correctly refuses the second booking
+  83  | 
+  84  |     await expect(page.getByText(/not available|unavailable|already booked|no longer available/i)).toBeVisible();
+  85  |     await expect(reservation.crashMessage).toHaveCount(0);
+  86  |   });
+  87  | });
+  88  | 
+  89  | test.describe('Guest error handling', () => {
+  90  |   // UI-02: unknown and non-numeric room ids crash the page
+  91  |   for (const path of ['/reservation/9999?checkin=2032-01-01&checkout=2032-01-03', '/reservation/abc']) {
+  92  |     test(`AT-06 ${path} shows a not-found message @known-defect`, async ({ page }) => {
+  93  |       knownDefect(test, 'UI-02: the page crashes instead of showing a not-found message');
+  94  |       await page.goto(path);
+  95  |       await page.waitForLoadState('networkidle');
+  96  |       await expect(page.getByText(/not found|does not exist|no longer exists/i)).toBeVisible();
+  97  |       await expect(page.getByText(/couldn.t load/i)).toHaveCount(0);
+  98  |     });
+  99  |   }
+  100 | });
+  101 | 
+```

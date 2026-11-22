@@ -8,7 +8,7 @@ module.exports = defineConfig({
   expect: { timeout: 10_000 },
   workers: 2,
   retries: 0,
-  reporter: [['list'], ['html', { open: 'never' }], ['json', { outputFile: 'test-results.json' }]],
+  reporter: [['list'], ['html', { open: 'never' }], ['json', { outputFile: 'test-results.json' }], ['junit', { outputFile: 'test-results.xml' }]],
   use: {
     baseURL,
     trace: 'retain-on-failure',

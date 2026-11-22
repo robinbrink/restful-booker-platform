@@ -5,12 +5,14 @@ Automated checks and test documentation for the Shady Meadows B&B booking platfo
 | Document | What it contains |
 |---|---|
 | [TEST_PLAN.md](TEST_PLAN.md) | Risk assessment, positive and negative scenarios and why they were prioritised, automated and manual test cases, non-functional tests to consider, findings |
+| [reports/latest/html/index.html](reports/latest/html/index.html) | HTML report of a real run (open in a browser); also `junit.xml` in the same folder |
 | [BUGS.md](BUGS.md) | Defect reports: steps, actual result, expected result |
 | `tests/` | Playwright tests |
 
 ## Use of AI assistance
 
-Claude (Anthropic's AI assistant, used through Claude Code) was used to assist with this assignment: exploring the platform, drafting the Playwright tests, and drafting the test plan, bug report and this README. I tested the website myself to confirm that the tests are valid and that the defects described in [BUGS.md](BUGS.md) are real.
+Claude (Anthropic's AI assistant, used through Claude Code) was used to assist with this assignment: mainly with drafting the Playwright tests, and the formatting the test plan, bug report and this README. I tested the website myself to confirm that the tests are valid and that the defects described in [BUGS.md](BUGS.md) are real. I then reviewed and expanded on Claude's work to ensure the quality. 
+AI is a tool to assist us in our jobs, but QA's are still required to maintain the quality of the systems.
 
 ## Prerequisites
 
@@ -62,7 +64,10 @@ npx playwright show-report     # open the HTML report from the last run
 After a run:
 
 - **Interactive report:** `npm run report` opens the HTML report (`playwright-report/`) with steps, screenshots and traces for failures.
+- **Committed report from a real run:** [reports/latest/](reports/latest/) holds the HTML report (`html/index.html`, open it directly in a browser), a JUnit XML file (`junit.xml`), the raw JSON results and the written summary. You can read a real run without executing anything. Trace files are not included, since passing tests do not keep them.
 - **Written summary:** `npm run report:summary` turns the run's `test-results.json` into [TEST_RESULTS.md](TEST_RESULTS.md): counts, each known defect with its bug id and reason, and the passing tests. The copy in this folder is from the latest run.
+
+To refresh the committed copy after a run, use `npm run report:publish`.
 
 Run `npm test` without a `--reporter` option, because that option replaces the HTML and JSON reporters the report needs.
 

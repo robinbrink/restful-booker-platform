@@ -10,7 +10,7 @@
 > | Test scenarios and why they were prioritised | [`playwright-tests/TEST_PLAN.md`](playwright-tests/TEST_PLAN.md) (risk assessment, positive and negative scenarios, automated and manual cases, non-functional tests to consider) |
 > | Bug report | [`playwright-tests/BUGS.md`](playwright-tests/BUGS.md) (10 defects, all reproducible in the browser, with steps, actual and expected results) |
 > | Setup, run instructions, assumptions, limitations | [`playwright-tests/README.md`](playwright-tests/README.md) |
-> | Latest run results | [`playwright-tests/TEST_RESULTS.md`](playwright-tests/TEST_RESULTS.md) |
+> | Latest run results | [`playwright-tests/TEST_RESULTS.md`](playwright-tests/TEST_RESULTS.md) (summary) and [`playwright-tests/reports/latest/html/index.html`](playwright-tests/reports/latest/html/index.html) (full HTML report of a real run: open it in a browser; a JUnit `junit.xml` is in the same folder) |
 >
 > **AI assistance:** Claude (Anthropic's AI assistant) was used to assist with this assignment. I tested the website myself to confirm the tests are valid. See `playwright-tests/README.md`.
 >

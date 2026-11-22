@@ -1,0 +1,149 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: admin\messages.spec.js >> Guest message reaches the admin >> AT-22 the new-booking message tells the admin which room was booked @known-defect
+- Location: tests\admin\messages.spec.js:51:3
+
+# Error details
+
+```
+Error: expect(locator).toBeVisible() failed
+
+Locator: getByText(/\b101\b|\bSingle\b/)
+Expected: visible
+Timeout: 10000ms
+Error: element(s) not found
+
+Call log:
+  - Expect "toBeVisible" getByText(/\b101\b|\bSingle\b/) with timeout 10000ms
+  - waiting for getByText(/\b101\b|\bSingle\b/)
+
+```
+
+```yaml
+- navigation:
+  - link "Restful Booker Platform Demo":
+    - /url: /
+  - list:
+    - listitem:
+      - link "Rooms":
+        - /url: /admin/rooms
+    - listitem:
+      - link "Report":
+        - /url: /admin/report
+    - listitem:
+      - link "Branding":
+        - /url: /admin/branding
+    - listitem:
+      - link "Messages 1":
+        - /url: /admin/message
+  - list:
+    - listitem:
+      - link "Front Page":
+        - /url: /
+    - listitem:
+      - button "Logout"
+- paragraph: Name
+- paragraph: Subject
+- paragraph: James Dean
+- paragraph: Booking enquiry
+- text: 
+- paragraph: past bad
+- paragraph: You have a new booking!
+- text: 
+- paragraph: MsgTest
+- paragraph: TestMsg
+- text: 
+- paragraph: family test
+- paragraph: You have a new booking!
+- text: 
+- paragraph: overlap test
+- paragraph: You have a new booking!
+- text: 
+- paragraph: Autotest Takxt0g
+- paragraph: You have a new booking!
+- text: 
+- alert
+- dialog "onRequestClose Example":
+  - paragraph: "From: Autotest Takxt0g"
+  - paragraph: "Phone: 01234567890"
+  - paragraph: "Email: autotest@example.com"
+  - paragraph: You have a new booking!
+  - paragraph: "You have a new booking from Autotest Takxt0g. They have booked a room for the following dates: 2034-01-07 to 2034-01-09"
+  - button "Close"
+```
+
+# Test source
+
+```ts
+  1  | const { test, expect } = require('@playwright/test');
+  2  | const { tag, futureRange } = require('../support/data');
+  3  | const { cleanup, createBooking } = require('../support/api');
+  4  | const { knownDefect } = require('../support/known');
+  5  | 
+  6  | const unreadCount = async (page) => {
+  7  |   const text = await page.locator('a[href="/admin/message"]').first().innerText();
+  8  |   const m = text.match(/(\d+)/);
+  9  |   return m ? Number(m[1]) : 0;
+  10 | };
+  11 | 
+  12 | test.describe('Guest message reaches the admin', () => {
+  13 |   let t;
+  14 |   test.beforeEach(() => { t = tag(); });
+  15 |   test.afterEach(async ({ request }) => { await cleanup(request, t); });
+  16 | 
+  17 |   test('AT-08 a guest contact message appears in admin, unread until opened @smoke', async ({ page, browser, request }) => {
+  18 |     const subject = `Autotest enquiry ${t}`;
+  19 | 
+  20 |     // Guest sends the message (a separate, logged-out browser context)
+  21 |     const guestContext = await browser.newContext({ storageState: { cookies: [], origins: [] } });
+  22 |     const guestPage = await guestContext.newPage();
+  23 |     await guestPage.goto('/');
+  24 |     await guestPage.fill('#name', `Autotest ${t}`);
+  25 |     await guestPage.fill('#email', 'autotest@example.com');
+  26 |     await guestPage.fill('#phone', '01234567890');
+  27 |     await guestPage.fill('#subject', subject);
+  28 |     await guestPage.fill('#description', 'This is an automated test message for the admin.');
+  29 |     await guestPage.getByRole('button', { name: 'Submit' }).click();
+  30 |     await expect(guestPage.getByText(/Thanks for getting in touch/)).toBeVisible();
+  31 |     await expect(guestPage.getByText(subject)).toBeVisible();
+  32 |     await guestContext.close();
+  33 | 
+  34 |     // Admin sees it
+  35 |     await page.goto('/admin/message');
+  36 |     const row = page.getByText(subject);
+  37 |     await expect(row).toBeVisible();
+  38 |     // Check this message's own read flag, not the shared unread badge, which other tests also change
+  39 |     const isRead = async () => (await (await request.get('/api/message')).json()).messages.find((m) => m.subject === subject).read;
+  40 |     expect(await isRead()).toBe(false);
+  41 |     expect(await unreadCount(page)).toBeGreaterThan(0);
+  42 | 
+  43 |     await row.click();
+  44 |     await expect(page.getByText(`From: Autotest ${t}`)).toBeVisible();
+  45 |     await expect(page.getByText('Phone: 01234567890')).toBeVisible();
+  46 |     await expect(page.getByText('Email: autotest@example.com')).toBeVisible();
+  47 |     await expect.poll(isRead).toBe(true);
+  48 |   });
+  49 | 
+  50 |   // UI-08: the booking notification does not say which room was booked
+  51 |   test('AT-22 the new-booking message tells the admin which room was booked @known-defect', async ({ page, request }) => {
+  52 |     knownDefect(test, 'UI-08: the message has the guest and dates but no room number or type');
+  53 |     const { checkin, checkout } = futureRange(2);
+  54 |     const res = await createBooking(request, { roomid: 1, checkin, checkout, lastname: t });
+  55 |     expect(res.status()).toBe(201);
+  56 | 
+  57 |     await page.goto('/admin/message');
+  58 |     await page.getByText(`Autotest ${t}`).first().click();
+  59 |     await expect(page.getByText('You have a new booking from')).toBeVisible();
+  60 |     await expect(page.getByText(`${checkin} to ${checkout}`)).toBeVisible(); // the dates are there
+> 61 |     await expect(page.getByText(/\b101\b|\bSingle\b/)).toBeVisible(); // the room should be too
+     |                                                        ^ Error: expect(locator).toBeVisible() failed
+  62 |   });
+  63 | });
+  64 | 
+```
