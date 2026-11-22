@@ -8,6 +8,10 @@ Automated checks and test documentation for the Shady Meadows B&B booking platfo
 | [BUGS.md](BUGS.md) | Defect reports: steps, actual result, expected result |
 | `tests/` | Playwright tests |
 
+## Use of AI assistance
+
+Claude (Anthropic's AI assistant, used through Claude Code) was used to assist with this assignment: exploring the platform, drafting the Playwright tests, and drafting the test plan, bug report and this README. I tested the website myself to confirm that the tests are valid and that the defects described in [BUGS.md](BUGS.md) are real.
+
 ## Prerequisites
 
 The platform itself needs (from the repository root README):

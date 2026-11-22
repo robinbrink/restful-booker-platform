@@ -12,6 +12,8 @@
 > | Setup, run instructions, assumptions, limitations | [`playwright-tests/README.md`](playwright-tests/README.md) |
 > | Latest run results | [`playwright-tests/TEST_RESULTS.md`](playwright-tests/TEST_RESULTS.md) |
 >
+> **AI assistance:** Claude (Anthropic's AI assistant) was used to assist with this assignment. I tested the website myself to confirm the tests are valid. See `playwright-tests/README.md`.
+>
 > ### Quick start
 >
 > **Prerequisites:** JDK 26, Maven 3.9.14, Node and npm (see Requirements below). I ran it on Windows 11 with Node 26.
