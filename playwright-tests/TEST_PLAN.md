@@ -116,7 +116,7 @@ This assignment focused on functional UI testing, so the tests below were not ru
 
 ## 5. Findings
 
-Full detail, steps and expected behaviour are in [BUGS.md](BUGS.md). UI findings come first. Severity is my judgement.
+Full detail, steps and expected behaviour are in [BUGS.md](BUGS.md). UI findings come first. Severity is based on my judgement.
 
 ### Findings
 
