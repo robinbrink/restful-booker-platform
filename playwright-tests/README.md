@@ -7,7 +7,8 @@ My thought process in this submission was to manually explore the website, docum
 | Document | What it contains |
 |---|---|
 | [TEST_PLAN.md](TEST_PLAN.md) | Risk assessment, positive and negative scenarios and why they were prioritised, automated and manual test cases, non-functional tests to consider, findings |
-| [reports/latest/html/index.html](reports/latest/html/index.html) | HTML report of a real run (open in a browser); also `junit.xml` in the same folder |
+| [reports/latest/html/index.html](reports/latest/html/index.html) | The Playwright HTML report of a real run (open in a browser); also `junit.xml` in the same folder |
+| [TEST_RESULTS.md](TEST_RESULTS.md) | Written summary of the same run: counts, the 13 failing known defects with their bug ids, and the passing tests |
 | [BUGS.md](BUGS.md) | Defect reports: steps, actual result, expected result |
 | `playwright-tests/tests/` | Playwright tests |
 
@@ -70,7 +71,7 @@ npx playwright show-report     # open the HTML report from the last run
 After a run:
 
 - **Interactive report:** `npm run report` opens the HTML report (`playwright-report/`) with the steps, error details and a screenshot for each failure.
-- **Committed report from a real run:** [reports/latest/](reports/latest/) holds the HTML report (`html/index.html`, open it directly in a browser), a JUnit XML file (`junit.xml`), the raw JSON results and the written summary. You can read a real run without executing anything. Failed tests have a screenshot and error details. Trace files are not included (traces are off by default to keep the report small).
+- **Committed report from a real run:** the Playwright report is at [reports/latest/html/index.html](reports/latest/html/index.html), with the written summary in [TEST_RESULTS.md](TEST_RESULTS.md) alongside it. The folder [reports/latest/](reports/latest/) holds the HTML report (`html/index.html`, open it directly in a browser), a JUnit XML file (`junit.xml`), the raw JSON results and the written summary. You can read a real run without executing anything. Failed tests have a screenshot and error details. Trace files are not included (traces are off by default to keep the report small).
 
   **The published run:** 22 November 2026, 17:53 UTC, 2 minutes, made with `npm test` (headless Chromium, 2 workers) against the platform running locally. 33 tests: **20 passed and 13 failed**. All 13 failures are the known defects in [BUGS.md](BUGS.md), written as tests that assert the correct behaviour, so they fail until the defect is fixed. 0 unexpected failures, 0 flaky.
 - **Written summary:** `npm run report:summary` turns the run's `test-results.json` into [TEST_RESULTS.md](TEST_RESULTS.md): counts, each known defect with its bug id and reason, and the passing tests. The copy in this folder is from the published run above.
