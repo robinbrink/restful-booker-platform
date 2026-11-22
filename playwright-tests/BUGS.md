@@ -1,6 +1,6 @@
 # Bug report
 
-Found while testing the Restful Booker Platform (local build, v2.2) as a guest and as an admin. UI defects are listed first, then API defects that back up a UI risk.
+Found while testing the Restful Booker Platform (local build, v2.2) as a guest and as an admin. All defects were found and can be reproduced in the browser.
 
 Severity is my judgement: **High** = a guest or admin hits a broken journey, or personal data is exposed; **Medium** = wrong behaviour with a workaround or limited reach; **Low** = unclear or untidy behaviour.
 
@@ -16,11 +16,6 @@ Severity is my judgement: **High** = a guest or admin hits a broken journey, or 
 | UI-08 | Medium | The "new booking" message sent to the admin does not say which room was booked |
 | UI-09 | Low | Branding changes take up to a minute to show on the public site |
 | UI-10 | Medium | The admin page lets you create a second room with an existing room number |
-| API-01 | High | Guests can read all contact messages, including personal details |
-| API-02 | Medium | Booking API accepts a nonexistent room, past dates and a 20-year stay |
-| API-03 | Medium | Logout does not invalidate the token; auth cookie is not `HttpOnly` |
-| API-04 | Medium | No rate limiting or lockout on login |
-| API-05 | Medium | Error cases return 500; room creation accepts unknown features and duplicate names |
 
 All steps assume the app is running at http://localhost:3003.
 
@@ -90,7 +85,7 @@ All steps assume the app is running at http://localhost:3003.
 2. On **Rooms**, click the delete (x) icon on that room's row.
 3. Open the room's reservation URL.
 
-**Actual:** the room disappears immediately with no confirmation and no warning that it has bookings. The room's reservation page then crashes (UI-02). Through the API the room's bookings are still returned for that room id, and `GET /api/room/{id}` returns 500.
+**Actual:** the room disappears immediately with no confirmation and no warning that it has bookings. The room's reservation page then crashes (UI-02).
 **Expected:** a confirmation step that mentions existing bookings, and either blocking the delete or handling the bookings; a deleted room should be a clean "not found".
 
 ### UI-07 (Low): Validation messages in the admin room form and the guest booking form are vague and badly formatted
@@ -140,71 +135,14 @@ All steps assume the app is running at http://localhost:3003.
 3. Repeat if you like: every click adds another room.
 
 **Actual:** no error. A second room `101` appears in the table, and both show up in `GET /api/room`. The room list now has two rows with the same number, with different prices if you chose a different one, and nothing tells staff which is the real one. Running the Java e2e suite that `build_locally.cmd` starts also leaves duplicates (two `103` rooms on my instance).
-**Expected:** the form rejects a room number that already exists, with a message such as "Room number 101 already exists". The same rule should apply in the API (see API-05).
+**Expected:** the form rejects a room number that already exists, with a message such as "Room number 101 already exists".
 **Impact:** room numbers are how staff and the report identify a room (the report shows "Name - Room: 103"), so duplicates make bookings ambiguous.
 
----
-
-## API defects (supporting)
-
-The API is reachable directly, so these affect guests even though the UI never shows them. Use this login to get a token for the steps that need one:
-
-```bash
-TOK=$(curl -s -X POST http://localhost:3003/api/auth/login \
-  -H 'Content-Type: application/json' \
-  -d '{"username":"admin","password":"password"}' | sed -E 's/.*"token":"([^"]+)".*/\1/')
-```
-
-### API-01 (High): Guests can read all contact messages, including personal details
-
-**Steps (no login)**
-1. `curl http://localhost:3003/api/message`
-2. `curl http://localhost:3003/api/message/1`
-
-**Actual:** both return 200. The list shows every sender and subject; the detail call returns name, email, phone and the full text, for example `{"description":"I would like to book a room at your place","email":"james@email.com","messageid":1,"name":"James Dean","phone":"01402 619211","subject":"Booking enquiry"}`.
-**Expected:** 401 or 403 without an admin token. The admin Messages page requires login; the API behind it does not. Ids are sequential, so every message can be collected.
-
-### API-02 (Medium): Booking API accepts a nonexistent room, past dates and a 20-year stay
-
-**Steps:** `POST http://localhost:3003/api/booking` with this body, changing `roomid` and the dates:
-
-```bash
-curl -i -X POST http://localhost:3003/api/booking -H 'Content-Type: application/json' \
-  -d '{"roomid":9999,"firstname":"Testy","lastname":"Guestly","depositpaid":false,"email":"t@e.com","phone":"01234567890","bookingdates":{"checkin":"2027-07-01","checkout":"2027-07-03"}}'
-```
-
-**Actual:** 201 Created for `roomid` 9999 (no such room), for dates in 2020, and for `2030-01-01` to `2050-01-01` (which leaves the room unavailable for 20 years in the public `GET /api/report/room/{id}`).
-**Expected:** 4xx for a room that does not exist, dates in the past, and an unreasonable stay length.
-
-### API-03 (Medium): Logout does not invalidate the token; the auth cookie is not `HttpOnly`
-
-**Steps:** log in and keep the token; log out through the admin UI; then
-`curl -X POST http://localhost:3003/api/auth/validate -H 'Content-Type: application/json' -d "{\"token\":\"$TOK\"}"`
-
-**Actual:** `{"valid":true}`. In the code, `assets/src/components/admin/Nav.tsx` calls `/api/auth/logout` without sending the token, and `assets/src/app/api/auth/logout/route.ts` is a stub (its comment says "Here you would typically handle the actual logout logic") that returns success without calling the auth service. Logout only removes the cookie in the browser. The `token` cookie also has `HttpOnly` false and `Secure` false.
-**Expected:** the token is deleted on the server at logout, and the cookie is `HttpOnly` (and `Secure` over HTTPS).
-
-### API-04 (Medium): No rate limiting or lockout on login
-
-**Steps:** send 10 wrong passwords to `POST /api/auth/login`, then the correct one.
-**Actual:** each wrong attempt returns 401 as normal and the correct login then succeeds.
-**Expected:** throttling or a temporary lockout. With one shared admin account and a published default password this is the main attack.
-
-### API-05 (Medium): Error cases return 500; room creation accepts invalid values
-
-**Steps and actual**
-- `GET /api/message/999999` returns 500 (expected 404).
-- `POST /api/room` with `Cookie: token=garbage` returns 500 (expected 401).
-- `POST /api/room` with a 500-character `roomName` returns 500 (expected 400).
-- `GET /api/room/{id of a deleted room}` returns 500 (expected 404).
-- `POST /api/room` with a feature `"Jacuzzi"` or a `roomName` that already exists returns 200 and stores it.
-
-**Expected:** client mistakes give 4xx with a helpful message; features come from the offered list and room names are unique.
 
 ---
 
 ## Checked, not a defect
 
 - The Next.js development overlay and "stale version" notice appear because the app runs in dev mode.
-- Double-booking is blocked for overlapping dates, and back-to-back stays are allowed.
+- A second booking for dates that are already taken is refused by the system (UI-01 covers how the page shows it).
 - Script and markup typed into the contact form, booking names and room names are shown as text and do not run.

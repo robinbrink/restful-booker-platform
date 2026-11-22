@@ -8,7 +8,7 @@
 > |---|---|
 > | Code (runnable from a clean start) | [`playwright-tests/`](playwright-tests/) plus the platform in this repository |
 > | Test scenarios and why they were prioritised | [`playwright-tests/TEST_PLAN.md`](playwright-tests/TEST_PLAN.md) (risk assessment, positive and negative scenarios, automated and manual cases) |
-> | Bug report | [`playwright-tests/BUGS.md`](playwright-tests/BUGS.md) (15 defects: 10 UI, 5 API, with steps, actual and expected results) |
+> | Bug report | [`playwright-tests/BUGS.md`](playwright-tests/BUGS.md) (10 defects, all reproducible in the browser, with steps, actual and expected results) |
 > | Setup, run instructions, assumptions, limitations | [`playwright-tests/README.md`](playwright-tests/README.md) |
 > | Latest run results | [`playwright-tests/TEST_RESULTS.md`](playwright-tests/TEST_RESULTS.md) |
 >

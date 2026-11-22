@@ -2,7 +2,7 @@
 
 **Target:** http://localhost:3003 (v2.2, run locally, Next.js dev mode)
 **Tooling:** Playwright (`playwright-tests/`), Chromium
-**Approach:** explore as a **guest** and as an **admin**, user interface first. API checks done by hand with `curl` confirm what the UI cannot show (access control, rules the UI should enforce) and are ranked after the UI findings. There are no automated API tests: all automated tests drive the UI.
+**Approach:** explore as a **guest** and as an **admin**, user interface first. Every automated test drives the UI. The platform's API is used only to set up and remove test data. API and security testing was not part of this assignment's scope (see "Not covered yet").
 
 Defects are written up in [BUGS.md](BUGS.md). Setup and run instructions are in [README.md](README.md).
 
@@ -13,13 +13,13 @@ Defects are written up in [BUGS.md](BUGS.md). Setup and run instructions are in 
 | Guest: home, availability search, room page, reservation, contact form | Load and performance testing |
 | Admin: login/logout, rooms, report, branding, messages | Penetration testing beyond basic probes |
 | Data flowing between admin and the public site | Third-party map tile content |
-| Manual `curl` checks that back up a UI risk | Automated API tests, exhaustive API contract testing |
+| Test data set-up through the API | API and security testing, exhaustive API contract testing |
 
 Site map: `/` (hero, availability search, room cards, map, contact form), `/reservation/{id}?checkin=&checkout=` (room details, calendar, price summary, guest form, confirmation), `/admin` (login), `/admin/rooms`, `/admin/report`, `/admin/branding`, `/admin/message`.
 
 ## 2. Risk assessment
 
-Risk = likelihood x impact, judged by what a real user would experience first. UI risks are listed first because that is where guests and staff meet the system; the API risks matter because every service can also be called directly.
+Risk = likelihood x impact, judged by what a real user would experience first. UI risks are listed first because that is where guests and staff meet the system.
 
 | # | Risk | Where | Likelihood | Impact | Priority |
 |---|---|---|---|---|---|
@@ -28,15 +28,15 @@ Risk = likelihood x impact, judged by what a real user would experience first. U
 | R3 | Data entered by admin does not reach the public site (rooms, branding) | UI | High | High | **High** |
 | R4 | Date and price handling is wrong or unchecked (past or reversed dates, negative totals) | UI | High | Medium | **High** |
 | R5 | Admin actions are destructive or unclear (delete without confirmation, vague errors) | UI | Medium | Medium | Medium |
-| R6 | Authentication and access control can be bypassed or misused | UI + API | Medium | High | **High** |
-| R7 | Guests' personal data is exposed | API | High | High | **Critical** |
+| R6 | Authentication and access control can be bypassed or misused | UI | Medium | High | **High** |
+| R7 | Guests' personal data (contact messages, booking details) is exposed | UI | Medium | High | **High** (only the UI side was tested) |
 | R8 | Stored script/markup input runs in the browser | UI | Low | High | Medium (tested, held up) |
 | R9 | Accessibility and responsive layout | UI | Medium | Medium | Medium |
 
 **Why this order**
 - **Guest journey first (R1, R2, R4).** The booking flow is the product. A crash or a wrong price in front of a guest costs a booking, and these were cheap to reach through the UI.
 - **Admin to public data flow (R3).** Admin changes only matter if guests see them. This is where a mismatch is most likely and least visible to staff.
-- **Security (R6, R7).** Ranked critical or high because of impact (personal data, shared admin login), even though the evidence comes from the API. A guest should not be able to reach this data at all, whatever the UI shows.
+- **Security (R6, R7).** Ranked high because of impact (personal data, shared admin login). Only the UI side is covered: login, logged-out access and what staff see. Deeper security testing is left out and listed under "Not covered yet".
 - **Deliberately lighter:** cosmetic and content issues, and exhaustive input fuzzing. I chose fewer, deeper checks on R1 to R4 and R6 to R7 over broad shallow coverage.
 
 ## 3. Scenarios chosen (positive and negative)
@@ -50,7 +50,7 @@ Quality over quantity: a small set where each scenario has a clear reason. Posit
 | Contact form (R7, R8) | Valid message reaches admin with unread count | Empty, below/above limits, markup in fields | Public input that is stored and shown to staff |
 | Admin rooms (R3, R5) | Create, edit, delete a room and see the effect publicly | Invalid price, empty form, delete a room that has bookings | Admin changes drive what guests can book |
 | Admin branding (R3) | Update branding and see it on the public site | Invalid email, phone, coordinates | Only works if the form can be saved at all |
-| Access and sessions (R6, R7) | Login; admin pages work when logged in | Wrong password; admin pages when logged out; token after logout; guest reading messages | A single shared admin login and directly reachable services |
+| Access and sessions (R6, R7) | Login; admin pages work when logged in | Wrong password; admin pages when logged out; Back button after logout | A single shared admin login |
 
 Negative scenarios outnumber positive ones on purpose: the main flows are short and quick to confirm, and the defects were in what happens with bad input or an unexpected state.
 
@@ -100,7 +100,7 @@ These need a human eye or are poor value to automate. Each is a short timed sess
 
 Full detail, steps and expected behaviour are in [BUGS.md](BUGS.md). UI findings come first. Severity is my judgement.
 
-### UI findings
+### Findings
 
 | ID | Severity | Finding |
 |---|---|---|
@@ -115,25 +115,13 @@ Full detail, steps and expected behaviour are in [BUGS.md](BUGS.md). UI findings
 | UI-09 | Low | Branding changes take up to a minute to show on the public site (cached for 60 seconds, not cleared on save) |
 | UI-10 | Medium | The admin page lets you create a second room with an existing room number |
 
-### API findings (supporting)
-
-Found by hand with `curl` (no automated API tests). The steps in [BUGS.md](BUGS.md) are the evidence.
-
-| ID | Severity | Finding |
-|---|---|---|
-| API-01 | High | Guests can read every contact message, including name, email and phone, without logging in |
-| API-02 | Medium | Booking API accepts a nonexistent room, past dates and a 20-year stay |
-| API-03 | Medium | Logout does not invalidate the token on the server, and the auth cookie is not `HttpOnly` |
-| API-04 | Medium | No rate limiting or lockout on login |
-| API-05 | Medium | Several error cases return 500 instead of 4xx; room creation accepts unknown features and duplicate names |
-
 ### What held up
 
-- Double-booking is blocked for overlapping ranges (exact, inside, enclosing); back-to-back stays are allowed.
+- A second booking for dates that are already taken is refused by the system (UI-01 is about how the page shows that refusal).
 - Booking confirmation shows the correct dates, and a guest booking creates an admin notification message.
-- Contact and reservation form validation shows clear, field-specific messages.
+- Contact form validation shows clear, field-specific messages (the reservation form does not: see UI-07).
 - Script and markup typed into the contact form, booking names and room names is shown as text; nothing ran in the browser.
-- Login failures give one generic message; admin pages and write APIs reject users who are not logged in.
+- Login failures give one generic message, and admin pages show the login form when you are not logged in.
 
 ## 6. Test data and environment
 
@@ -154,6 +142,7 @@ Found by hand with `curl` (no automated API tests). The steps in [BUGS.md](BUGS.
 - Calendar interaction in depth (drag selection, month boundaries): left to MT-01.
 - Two simultaneous bookings for the same dates (race condition).
 - Contact content pages (`/cookie`, `/privacy`): not verified.
+- API and security testing: direct access control, token and session handling, rate limiting, booking rules enforced by the API.
 - Firefox and WebKit, accessibility scanning, production build.
 
 ## 9. Exit criteria
