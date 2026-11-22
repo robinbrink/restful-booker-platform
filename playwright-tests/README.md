@@ -4,7 +4,7 @@ Automated checks and test documentation for the Shady Meadows B&B booking platfo
 
 | Document | What it contains |
 |---|---|
-| [TEST_PLAN.md](TEST_PLAN.md) | Risk assessment, positive and negative scenarios and why they were prioritised, automated and manual test cases, findings |
+| [TEST_PLAN.md](TEST_PLAN.md) | Risk assessment, positive and negative scenarios and why they were prioritised, automated and manual test cases, non-functional testing comments, findings |
 | [BUGS.md](BUGS.md) | Defect reports: steps, actual result, expected result |
 | `tests/` | Playwright tests |
 
