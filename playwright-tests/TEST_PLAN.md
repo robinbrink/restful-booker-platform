@@ -96,26 +96,23 @@ These need a human eye or are poor value to automate. Each is a short timed sess
 | MT-05 | Try unusual input in every form: emoji, very long text, spaces, pasted multi-line | Truncation, garbled text, layout breaking |
 | MT-06 | Mid-booking: Back/Refresh, two tabs, double-click Reserve | Duplicate bookings, lost data, stale availability |
 
-### 4.3 Non-functional testing
+### 4.3 Non-functional testing: tests to consider
 
-The brief was a UI-first functional assessment, so non-functional testing was not run as a separate exercise. This section says which areas matter for a booking site, what I saw along the way, and what I would do with more time. Nothing below is a measured result unless it says so.
+This assignment focused on functional UI testing, so the tests below were not run as a separate exercise. They are the non-functional tests I would consider for a booking site like this one, and why each matters.
 
-| Area | Why it matters here | What I did | Status | How I would test it |
-|---|---|---|---|---|
-| **Usability** | Guests book without help; staff manage rooms and messages daily | Used both journeys as a first-time user would and logged the friction as defects: vague form messages (UI-07), delete with no confirmation (UI-06), a booking notification that omits the room (UI-08) | Partly done, through exploratory use | Timed manual sessions with a few real users (MT-01, MT-04), watching where they hesitate |
-| **Accessibility** | Public booking site; many users rely on keyboard or screen readers | One observation only: the guest booking form has no `label` elements (placeholders only) and does not mark invalid fields. No keyboard, screen-reader or contrast checks | Not done | Keyboard-only run of booking and contact forms, NVDA or Narrator pass, an automated axe scan in Playwright, and a contrast check (MT-02) |
-| **Compatibility (browsers, devices)** | Guests use phones and different browsers | Chromium only, at a 1280 px wide window. No other browser or screen size checked | Not done | Add Firefox and WebKit projects to the Playwright config, plus manual checks at 375, 768 and 1920 px (MT-03) |
-| **Performance** | Slow pages lose bookings | No timings or load measured. I noticed pages loading in about a second after the first (slow) compile, but that is a development build, so it says little about real behaviour | Not done | Measure page load and API response times on a production build, then a small load test on search and booking (for example k6) |
-| **Reliability and error handling** | A guest should never see a broken page | Covered through the UI: the booking page crashes on taken dates (UI-01) and on unknown rooms (UI-02). Not tested: a backend service being down, two guests booking at the same moment | Partly done | Stop one service and use the site; fire two simultaneous bookings for the same dates |
-| **Security** | The site stores guests' names, emails and phone numbers behind a shared admin login | UI level only: markup and script typed into the contact form, booking names and room names is shown as text and did not run; admin pages show the login form when logged out. No direct testing of access control, sessions or rate limiting | Partly done, limited to the UI | A guided security review (for example OWASP ZAP) covering access control, token and session handling and brute-force protection |
-| **Data and caching** | Admin changes must reach guests promptly | Found that branding changes can take up to a minute to appear (UI-09) | Partly done | Check which responses are cached and for how long, against what the business expects |
-| **Portability / setup** | An assessor or new developer has to get it running | Followed the platform's own build on Windows 11. The front end did not start on the first attempt (documented in the README). Ran on Node 26, not the Node 24 named in the platform README | Partly done | Run the build and tests from a clean machine and on Mac or Linux |
+| Area | Why it matters for a booking site | Tests to consider |
+|---|---|---|
+| **Usability** | Guests book without help, and staff use the admin every day | Can a first-time guest find a room, pick dates and book without guidance? Are error messages clear and next to the field they refer to? Does the admin ask for confirmation before destructive actions? Are confirmations and notifications informative? |
+| **Accessibility** | A public site should work for keyboard and screen-reader users, and often has legal expectations (WCAG) | Complete the booking and contact forms using only the keyboard; check labels, focus order and visible focus; screen-reader pass (NVDA, VoiceOver); colour contrast; error messages announced to assistive technology; an automated scan (axe) in the test suite |
+| **Compatibility** | Guests use different browsers, devices and screen sizes | Chrome, Edge, Firefox and Safari; phone, tablet and desktop widths; zoom to 200%; date picker behaviour in each browser; touch input on the calendar |
+| **Performance** | Slow pages lose bookings | Page load time on a production build; response time of availability search and booking; behaviour with many rooms and bookings; a small load test (for example many guests searching and booking at once); effect of slow networks |
+| **Reliability and resilience** | A guest should never be left with a broken page or lost booking | What the user sees when a backend service is down or slow; no duplicate bookings from double-clicks, refresh or two tabs; two guests booking the same dates at the same moment; recovery after the services restart |
+| **Security** | The site stores guests' names, emails and phone numbers, and the admin is behind a login | Access control (can a guest reach admin data or actions?); session and token handling (expiry, logout); brute-force protection on login; input handling (script and markup in every field); exposure of personal data in responses and error messages; cookie flags; a guided scan (for example OWASP ZAP) |
+| **Data integrity and caching** | Admin changes must reach guests, and bookings must stay consistent | Do changes made by admin appear on the public site promptly? What happens to bookings when a room is changed or deleted? How long is data cached, and does a change clear the cache? |
+| **Portability and setup** | A new developer or assessor has to get it running | Build and run from a clean machine; different operating systems and runtime versions; clear setup instructions; behaviour of production and development builds |
+| **Maintainability and testability** | Tests are only useful if they stay reliable | Stable selectors and test hooks in the UI; tests that create and remove their own data and can run in parallel; repeatable results across runs |
 
-**Comments**
-- **What I prioritised:** usability and reliability, because they showed up directly in the guest and admin journeys and produced most of the defects.
-- **The biggest gaps:** accessibility, cross-browser and performance. I would do accessibility first, since an automated scan is cheap to add to the existing suite and the form issues in UI-07 suggest there is more to find.
-- **Why performance is deferred:** the app runs in development mode here, so timings would not be meaningful. It needs a production build first.
-- **Security:** I would not claim coverage beyond the UI-level checks above. A proper review is a separate piece of work.
+**Where I would start:** accessibility and cross-browser checks, because they are cheap to add to an existing Playwright suite and affect every guest; then reliability (service failure and simultaneous bookings); then performance, once there is a production build to measure. A proper security review is a separate piece of work.
 
 ## 5. Findings
 
@@ -163,7 +160,7 @@ Full detail, steps and expected behaviour are in [BUGS.md](BUGS.md). UI findings
 - Calendar interaction in depth (drag selection, month boundaries): left to MT-01.
 - Two simultaneous bookings for the same dates (race condition).
 - Contact content pages (`/cookie`, `/privacy`): not verified.
-- Non-functional testing beyond the observations in section 4.3 (accessibility, cross-browser, performance, security review).
+- Non-functional testing (section 4.3 lists what to consider).
 - API and security testing: direct access control, token and session handling, rate limiting, booking rules enforced by the API.
 - Firefox and WebKit, accessibility scanning, production build.
 

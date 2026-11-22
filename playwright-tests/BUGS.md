@@ -2,7 +2,7 @@
 
 Found while testing the Restful Booker Platform (local build, v2.2) as a guest and as an admin. All defects were found and can be reproduced in the browser.
 
-Severity is my judgement: **High** = a guest or admin hits a broken journey, or personal data is exposed; **Medium** = wrong behaviour with a workaround or limited reach; **Low** = unclear or untidy behaviour.
+The severity of the impact decides the level of priority to assign: **High** = a guest or admin hits a broken journey, or personal data is exposed; **Medium** = wrong behaviour with a workaround or limited reach; **Low** = unclear or untidy behaviour.
 
 | ID | Severity | Title |
 |---|---|---|
