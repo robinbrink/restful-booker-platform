@@ -1,4 +1,4 @@
-# Playwright tests for Restful Booker Platform
+# QA Analysis and Playwright Tests for Restful Booker Platform
 
 Automated checks and test documentation for the Shady Meadows B&B booking platform, written as a guest and as an admin.
 
@@ -9,7 +9,7 @@ My thought process in this submission was to manually explore the website, docum
 | [TEST_PLAN.md](TEST_PLAN.md) | Risk assessment, positive and negative scenarios and why they were prioritised, automated and manual test cases, non-functional tests to consider, findings |
 | [reports/latest/html/index.html](reports/latest/html/index.html) | HTML report of a real run (open in a browser); also `junit.xml` in the same folder |
 | [BUGS.md](BUGS.md) | Defect reports: steps, actual result, expected result |
-| `tests/` | Playwright tests |
+| `playwright-tests/tests/` | Playwright tests |
 
 ## Use of AI assistance
 
@@ -60,7 +60,8 @@ npm run test:headed             # watch the browser, one test at a time
 npx playwright test --debug     # step through a test with the Inspector
 npx playwright test --grep @smoke        # the quick smoke pack
 npx playwright test --project=guest    # guest and login tests only
-SHOW_DEFECTS=1 npx playwright test --grep @known-defect   # show the real failures behind the known defects
+npx playwright test --grep @known-defect   # only the tests for known defects (they fail on purpose)
+npx playwright test --trace retain-on-failure   # keep traces for failed tests when debugging
 npx playwright show-report     # open the HTML report from the last run
 ```
 
@@ -68,10 +69,10 @@ npx playwright show-report     # open the HTML report from the last run
 
 After a run:
 
-- **Interactive report:** `npm run report` opens the HTML report (`playwright-report/`) with steps, screenshots and traces for failures.
-- **Committed report from a real run:** [reports/latest/](reports/latest/) holds the HTML report (`html/index.html`, open it directly in a browser), a JUnit XML file (`junit.xml`), the raw JSON results and the written summary. You can read a real run without executing anything. Trace files are not included, since passing tests do not keep them.
+- **Interactive report:** `npm run report` opens the HTML report (`playwright-report/`) with the steps, error details and a screenshot for each failure.
+- **Committed report from a real run:** [reports/latest/](reports/latest/) holds the HTML report (`html/index.html`, open it directly in a browser), a JUnit XML file (`junit.xml`), the raw JSON results and the written summary. You can read a real run without executing anything. Failed tests have a screenshot and error details. Trace files are not included (traces are off by default to keep the report small).
 
-  **The published run:** 22 November 2026, 17:27 UTC, 2 minutes 23 seconds, made with `npm run test:headed` (a visible Chromium browser, one test at a time) against the platform running locally. 33 tests: 20 passed, 13 known defects failed as expected, 0 unexpected failures, 0 flaky.
+  **The published run:** 22 November 2026, 17:53 UTC, 2 minutes, made with `npm test` (headless Chromium, 2 workers) against the platform running locally. 33 tests: **20 passed and 13 failed**. All 13 failures are the known defects in [BUGS.md](BUGS.md), written as tests that assert the correct behaviour, so they fail until the defect is fixed. 0 unexpected failures, 0 flaky.
 - **Written summary:** `npm run report:summary` turns the run's `test-results.json` into [TEST_RESULTS.md](TEST_RESULTS.md): counts, each known defect with its bug id and reason, and the passing tests. The copy in this folder is from the published run above.
 
 To refresh the committed copy after a run, use `npm run report:publish`.
@@ -101,7 +102,7 @@ Ten are written up in [BUGS.md](BUGS.md), all found and reproducible in the brow
 
 ## Known limitations
 
-- **Known-defect tests pass by design.** Tests tagged `@known-defect` assert the correct behaviour and are marked with Playwright's `test.fail()`, so they show as expected failures (`x`) while the defect exists and turn red once it is fixed. Use `SHOW_DEFECTS=1` to see the actual failure for each. Each one names its bug id (UI-01 and so on).
+- **Known-defect tests fail by design.** Tests tagged `@known-defect` assert the correct behaviour, so they fail while the defect exists and pass once it is fixed. A normal run therefore shows 13 failures and `npm test` exits with a non-zero code. Each failing test names its bug id (UI-01 and so on) in the report. One of them, AT-16a, only fails on a freshly started instance (see UI-05), so it passes if a valid logo was already saved. If you want a green run while the defects exist, set `EXPECT_DEFECTS=1` (PowerShell: `$env:EXPECT_DEFECTS=1; npm test`), which marks them as expected failures.
 - **Automation covers the main flows only.** 33 tests run: guest booking, contact form, admin login, rooms, messages, report, and branding checks, all through the UI. There are no automated API tests, and API and security testing was left out of scope. The manual cases (MT-01 to MT-06) in the test plan are not automated.
 - **Chromium only.** Firefox and WebKit are not configured.
 - **Dev-mode build.** I tested a build that runs Next.js in development mode (an overlay and stale-version notice were visible). Behaviour on a production build was not compared.

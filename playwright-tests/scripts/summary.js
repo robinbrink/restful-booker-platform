@@ -3,38 +3,40 @@ const fs = require('fs');
 
 const data = JSON.parse(fs.readFileSync('test-results.json', 'utf8'));
 const rows = [];
+const clean = (s) => String(s || '').replace(/\x1b\[[0-9;]*m/g, '');
 
-function walk(suite, trail) {
-  const here = suite.title && !/\.spec\.js$/.test(suite.title) ? [...trail, suite.title] : trail;
+function walk(suite) {
   for (const spec of suite.specs || []) {
     for (const t of spec.tests) {
       const last = t.results[t.results.length - 1] || {};
-      const defect = (t.annotations || []).find((a) => a.type === 'fail');
+      const note = (t.annotations || []).find((a) => a.type === 'known-defect');
       rows.push({
         project: t.projectName,
-        area: here.join(' > '),
         title: spec.title.replace(/\s*@\w[\w-]*/g, '').trim(),
-        tags: (spec.title.match(/@[\w-]+/g) || []).join(' '),
-        file: spec.file,
-        status: t.status, // expected | unexpected | flaky | skipped
-        known: !!defect,
-        reason: defect && defect.description,
+        tagged: /@known-defect/.test(spec.title),
+        smoke: /@smoke/.test(spec.title),
+        status: t.status, // expected (passed) | unexpected (failed) | flaky | skipped
+        reason: note && note.description,
+        error: clean(last.error && last.error.message).split('\n').find((l) => l.trim()) || '',
         ms: last.duration || 0,
       });
     }
   }
-  for (const s of suite.suites || []) walk(s, here);
+  for (const s of suite.suites || []) walk(s);
 }
-data.suites.forEach((s) => walk(s, []));
+data.suites.forEach(walk);
 
-const known = rows.filter((r) => r.known);
-const normal = rows.filter((r) => !r.known);
 const failed = rows.filter((r) => r.status === 'unexpected');
+const knownFailing = failed.filter((r) => r.tagged);
+const otherFailing = failed.filter((r) => !r.tagged);
+const passed = rows.filter((r) => r.status === 'expected');
+const passedDefectTests = passed.filter((r) => r.tagged);
 const flaky = rows.filter((r) => r.status === 'flaky');
 const when = new Date(data.stats.startTime);
 const secs = Math.round(data.stats.duration / 1000);
-const esc = (s) => String(s).replace(/\|/g, '\|');
+const esc = (s) => String(s).replace(/\|/g, '\\|');
 const idOf = (t) => (t.match(/^(AT-\d+[a-z]?)/) || [])[1] || '';
+const nameOf = (t) => t.replace(/^AT-\d+[a-z]?\s*/, '');
 
 let md = `# Test results: latest run
 
@@ -46,33 +48,37 @@ Generated from \`test-results.json\` by \`npm run report:summary\`. The full HTM
 | | Count |
 |---|---|
 | Tests run | ${rows.length} |
-| Passed (behaviour works as expected) | ${normal.filter((r) => r.status === 'expected').length} |
-| Known defects (assert correct behaviour, fail as expected) | ${known.length} |
-| Unexpected failures | ${failed.length} |
+| Passed | ${passed.length} |
+| **Failed: known defects (failing on purpose, see below)** | **${knownFailing.length}** |
+| Failed: not a known defect (unexpected) | ${otherFailing.length} |
 | Flaky (passed on retry) | ${flaky.length} |
 
-${failed.length === 0 ? 'No unexpected failures. Every red result below is a documented defect in [BUGS.md](BUGS.md).' : '**There are unexpected failures, listed under "Unexpected failures" below.**'}
+${otherFailing.length === 0 ? `Every failure in this run is a documented defect in [BUGS.md](BUGS.md). The ${knownFailing.length} failing tests assert the *correct* behaviour, so they fail until the defect is fixed.` : '**There are failures that are not known defects, listed under "Unexpected failures" below.**'}
 
-## Known defects confirmed by this run
+## Failed tests: known defects
 
-Each test asserts the correct behaviour and fails today. When a defect is fixed its test turns red until the \`@known-defect\` marker is removed.
+Each test checks what the application *should* do, and fails because it does not. When a defect is fixed its test starts passing.
 
-| Test | Scenario | Bug | Why it fails |
-|---|---|---|---|
+| Test | Scenario | Bug | What is wrong | First line of the failure |
+|---|---|---|---|---|
 `;
-for (const r of known) {
+for (const r of knownFailing) {
   const bug = ((r.reason || '').match(/^(UI|API)-\d+/) || [''])[0];
-  md += `| ${idOf(r.title)} | ${esc(r.title.replace(/^AT-\d+[a-z]?\s*/, ''))} | ${bug} | ${esc((r.reason || '').replace(/^(UI|API)-\d+:\s*/, ''))} |\n`;
+  md += `| ${idOf(r.title)} | ${esc(nameOf(r.title))} | ${bug} | ${esc((r.reason || '').replace(/^(UI|API)-\d+:\s*/, ''))} | ${esc(r.error.slice(0, 110))} |\n`;
 }
 
 md += `\n## Passing tests\n\n| Test | Scenario | Project | Time |\n|---|---|---|---|\n`;
-for (const r of normal) md += `| ${idOf(r.title)} | ${esc(r.title.replace(/^AT-\d+[a-z]?\s*/, ''))}${r.tags.includes('@smoke') ? ' (smoke)' : ''} | ${r.project} | ${(r.ms / 1000).toFixed(1)}s |\n`;
+for (const r of passed) md += `| ${idOf(r.title)} | ${esc(nameOf(r.title))}${r.smoke ? ' (smoke)' : ''} | ${r.project} | ${(r.ms / 1000).toFixed(1)}s |\n`;
 
-if (failed.length) {
-  md += `\n## Unexpected failures\n\n| Test | Project |\n|---|---|\n`;
-  for (const r of failed) md += `| ${esc(r.title)} | ${r.project} |\n`;
+if (passedDefectTests.length) {
+  md += `\nNote: ${passedDefectTests.map((r) => idOf(r.title)).join(', ')} ${passedDefectTests.length > 1 ? 'are' : 'is'} tagged as a known defect but passed in this run. AT-16a only fails on a freshly started instance, where the seeded logo URL is rejected (UI-05); this instance already had a valid logo saved.\n`;
 }
 
-md += `\n## Notes\n\n- Known-defect tests use Playwright's \`test.fail()\`, so the suite is green while the defects exist. \`SHOW_DEFECTS=1 npx playwright test --grep @known-defect\` shows the real failure behind each.\n- The setup step (admin login) is counted in the run and passes.\n`;
+if (otherFailing.length) {
+  md += `\n## Unexpected failures\n\n| Test | Project |\n|---|---|\n`;
+  for (const r of otherFailing) md += `| ${esc(r.title)} | ${r.project} |\n`;
+}
+
+md += `\n## Notes\n\n- The failing tests are deliberate: they are the known defects, written as tests so the failure is visible and the same test confirms the fix later.\n- To get a green run while the defects exist, set \`EXPECT_DEFECTS=1\` (Playwright then marks them as expected failures).\n- The setup step (admin login) is counted in the run and passes.\n`;
 fs.writeFileSync('TEST_RESULTS.md', md);
-console.log(`TEST_RESULTS.md written: ${rows.length} tests, ${known.length} known defects, ${failed.length} unexpected failures`);
+console.log(`TEST_RESULTS.md written: ${rows.length} tests, ${passed.length} passed, ${knownFailing.length} known-defect failures, ${otherFailing.length} unexpected failures`);

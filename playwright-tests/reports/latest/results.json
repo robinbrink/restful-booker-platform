@@ -3,9 +3,7 @@
     "argv": [
       "C:\\Program Files\\nodejs\\node.exe",
       "C:\\Repos\\restful-booker-platform\\playwright-tests\\node_modules\\@playwright\\test\\cli.js",
-      "test",
-      "--headed",
-      "--workers=1"
+      "test"
     ],
     "configFile": "C:\\Repos\\restful-booker-platform\\playwright-tests\\playwright.config.js",
     "rootDir": "C:/Repos/restful-booker-platform/playwright-tests/tests",
@@ -19,7 +17,7 @@
     "grepInvert": null,
     "maxFailures": 0,
     "metadata": {
-      "actualWorkers": 1
+      "actualWorkers": 2
     },
     "preserveOutput": "always",
     "projects": [
@@ -28,7 +26,7 @@
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
-          "actualWorkers": 1
+          "actualWorkers": 2
         },
         "id": "setup",
         "name": "setup",
@@ -44,7 +42,7 @@
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
-          "actualWorkers": 1
+          "actualWorkers": 2
         },
         "id": "guest",
         "name": "guest",
@@ -60,7 +58,7 @@
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
-          "actualWorkers": 1
+          "actualWorkers": 2
         },
         "id": "admin",
         "name": "admin",
@@ -80,7 +78,7 @@
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
-          "actualWorkers": 1
+          "actualWorkers": 2
         },
         "name": "setup",
         "testDir": "C:\\Repos\\restful-booker-platform\\playwright-tests\\tests",
@@ -90,9 +88,8 @@
         "timeout": 60000,
         "use": {
           "baseURL": "http://localhost:3003",
-          "trace": "retain-on-failure",
-          "screenshot": "only-on-failure",
-          "headless": false
+          "trace": "off",
+          "screenshot": "only-on-failure"
         },
         "dependencies": [],
         "ignoreSnapshots": false,
@@ -105,7 +102,7 @@
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
-          "actualWorkers": 1
+          "actualWorkers": 2
         },
         "name": "guest",
         "testDir": "C:\\Repos\\restful-booker-platform\\playwright-tests\\tests",
@@ -115,7 +112,7 @@
         "timeout": 60000,
         "use": {
           "baseURL": "http://localhost:3003",
-          "trace": "retain-on-failure",
+          "trace": "off",
           "screenshot": "only-on-failure",
           "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/159.0.8154.6 Safari/537.36",
           "viewport": {
@@ -129,8 +126,7 @@
           "deviceScaleFactor": 1,
           "isMobile": false,
           "hasTouch": false,
-          "defaultBrowserType": "chromium",
-          "headless": false
+          "defaultBrowserType": "chromium"
         },
         "dependencies": [],
         "ignoreSnapshots": false,
@@ -143,7 +139,7 @@
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
-          "actualWorkers": 1
+          "actualWorkers": 2
         },
         "name": "admin",
         "testDir": "C:\\Repos\\restful-booker-platform\\playwright-tests\\tests",
@@ -153,7 +149,7 @@
         "timeout": 60000,
         "use": {
           "baseURL": "http://localhost:3003",
-          "trace": "retain-on-failure",
+          "trace": "off",
           "screenshot": "only-on-failure",
           "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/159.0.8154.6 Safari/537.36",
           "viewport": {
@@ -168,8 +164,7 @@
           "isMobile": false,
           "hasTouch": false,
           "defaultBrowserType": "chromium",
-          "storageState": ".auth/admin.json",
-          "headless": false
+          "storageState": ".auth/admin.json"
         },
         "dependencies": [
           "setup"
@@ -212,7 +207,7 @@
     "updateSnapshots": "default",
     "updateSourceMethod": "patch",
     "version": "1.65.1",
-    "workers": 1,
+    "workers": 2,
     "webServer": null
   },
   "suites": [
@@ -238,12 +233,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1374,
+                  "duration": 1503,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-22T17:27:22.911Z",
+                  "startTime": "2026-11-22T17:53:37.044Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -287,14 +282,14 @@
                   "results": [
                     {
                       "workerIndex": 1,
-                      "parallelIndex": 0,
+                      "parallelIndex": 1,
                       "status": "passed",
-                      "duration": 2126,
+                      "duration": 2306,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-22T17:27:24.904Z",
+                      "startTime": "2026-11-22T17:53:37.060Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -321,14 +316,14 @@
                   "results": [
                     {
                       "workerIndex": 1,
-                      "parallelIndex": 0,
+                      "parallelIndex": 1,
                       "status": "passed",
-                      "duration": 1109,
+                      "duration": 885,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-22T17:27:27.224Z",
+                      "startTime": "2026-11-22T17:53:39.443Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -355,14 +350,14 @@
                   "results": [
                     {
                       "workerIndex": 1,
-                      "parallelIndex": 0,
+                      "parallelIndex": 1,
                       "status": "passed",
-                      "duration": 1074,
+                      "duration": 937,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-22T17:27:28.345Z",
+                      "startTime": "2026-11-22T17:53:40.338Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -399,14 +394,14 @@
                   "results": [
                     {
                       "workerIndex": 1,
-                      "parallelIndex": 0,
+                      "parallelIndex": 1,
                       "status": "passed",
-                      "duration": 1098,
+                      "duration": 894,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-22T17:27:29.430Z",
+                      "startTime": "2026-11-22T17:53:41.286Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -435,14 +430,14 @@
                   "results": [
                     {
                       "workerIndex": 1,
-                      "parallelIndex": 0,
+                      "parallelIndex": 1,
                       "status": "passed",
-                      "duration": 1073,
+                      "duration": 959,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-22T17:27:30.542Z",
+                      "startTime": "2026-11-22T17:53:42.186Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -471,14 +466,14 @@
                   "results": [
                     {
                       "workerIndex": 1,
-                      "parallelIndex": 0,
+                      "parallelIndex": 1,
                       "status": "passed",
-                      "duration": 1183,
+                      "duration": 1005,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-22T17:27:31.627Z",
+                      "startTime": "2026-11-22T17:53:43.150Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -507,14 +502,14 @@
                   "results": [
                     {
                       "workerIndex": 1,
-                      "parallelIndex": 0,
+                      "parallelIndex": 1,
                       "status": "passed",
-                      "duration": 1095,
+                      "duration": 899,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-22T17:27:32.821Z",
+                      "startTime": "2026-11-22T17:53:44.162Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -541,14 +536,14 @@
                   "results": [
                     {
                       "workerIndex": 1,
-                      "parallelIndex": 0,
+                      "parallelIndex": 1,
                       "status": "passed",
-                      "duration": 1771,
+                      "duration": 1312,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-22T17:27:33.924Z",
+                      "startTime": "2026-11-22T17:53:45.067Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -593,15 +588,15 @@
                   "projectName": "guest",
                   "results": [
                     {
-                      "workerIndex": 1,
+                      "workerIndex": 2,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 3292,
+                      "duration": 3707,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-22T17:27:35.733Z",
+                      "startTime": "2026-11-22T17:53:39.032Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -627,15 +622,15 @@
                   "projectName": "guest",
                   "results": [
                     {
-                      "workerIndex": 1,
+                      "workerIndex": 2,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 1577,
+                      "duration": 1283,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-22T17:27:39.037Z",
+                      "startTime": "2026-11-22T17:53:42.820Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -661,15 +656,15 @@
                   "projectName": "guest",
                   "results": [
                     {
-                      "workerIndex": 1,
+                      "workerIndex": 2,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 1495,
+                      "duration": 1453,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-22T17:27:40.625Z",
+                      "startTime": "2026-11-22T17:53:44.112Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -684,7 +679,7 @@
             },
             {
               "title": "AT-04b every guest form message names the field it is about @known-defect",
-              "ok": true,
+              "ok": false,
               "tags": [
                 "known-defect"
               ],
@@ -693,27 +688,22 @@
                   "timeout": 60000,
                   "annotations": [
                     {
-                      "type": "fail",
-                      "description": "UI-07: messages such as \"size must be between 11 and 21\" and \"must not be empty\" do not name their field",
-                      "location": {
-                        "file": "C:\\Repos\\restful-booker-platform\\playwright-tests\\tests\\support\\known.js",
-                        "line": 6,
-                        "column": 39
-                      }
+                      "type": "known-defect",
+                      "description": "UI-07: messages such as \"size must be between 11 and 21\" and \"must not be empty\" do not name their field"
                     }
                   ],
-                  "expectedStatus": "failed",
+                  "expectedStatus": "passed",
                   "projectId": "guest",
                   "projectName": "guest",
                   "results": [
                     {
-                      "workerIndex": 1,
+                      "workerIndex": 2,
                       "parallelIndex": 0,
                       "status": "failed",
-                      "duration": 1617,
+                      "duration": 1332,
                       "error": {
-                        "message": "Error: an error message should mention /email/i\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoMatch\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected pattern: \u001b[32m/email/i\u001b[39m\nReceived string:  \u001b[31m\"size must be between 3 and 30\u001b[39m\n\u001b[31mmust not be empty\u001b[39m\n\u001b[31msize must be between 11 and 21\u001b[39m\n\u001b[31mmust not be empty\u001b[39m\n\u001b[31mFirstname should not be blank\u001b[39m\n\u001b[31mLastname should not be blank\u001b[39m\n\u001b[31msize must be between 3 and 18\"\u001b[39m",
-                        "stack": "Error: an error message should mention /email/i\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoMatch\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected pattern: \u001b[32m/email/i\u001b[39m\nReceived string:  \u001b[31m\"size must be between 3 and 30\u001b[39m\n\u001b[31mmust not be empty\u001b[39m\n\u001b[31msize must be between 11 and 21\u001b[39m\n\u001b[31mmust not be empty\u001b[39m\n\u001b[31mFirstname should not be blank\u001b[39m\n\u001b[31mLastname should not be blank\u001b[39m\n\u001b[31msize must be between 3 and 18\"\u001b[39m\n    at C:\\Repos\\restful-booker-platform\\playwright-tests\\tests\\guest\\booking.spec.js:67:64",
+                        "message": "Error: an error message should mention /email/i\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoMatch\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected pattern: \u001b[32m/email/i\u001b[39m\nReceived string:  \u001b[31m\"Lastname should not be blank\u001b[39m\n\u001b[31mFirstname should not be blank\u001b[39m\n\u001b[31msize must be between 3 and 18\u001b[39m\n\u001b[31msize must be between 3 and 30\u001b[39m\n\u001b[31msize must be between 11 and 21\u001b[39m\n\u001b[31mmust not be empty\u001b[39m\n\u001b[31mmust not be empty\"\u001b[39m",
+                        "stack": "Error: an error message should mention /email/i\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoMatch\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected pattern: \u001b[32m/email/i\u001b[39m\nReceived string:  \u001b[31m\"Lastname should not be blank\u001b[39m\n\u001b[31mFirstname should not be blank\u001b[39m\n\u001b[31msize must be between 3 and 18\u001b[39m\n\u001b[31msize must be between 3 and 30\u001b[39m\n\u001b[31msize must be between 11 and 21\u001b[39m\n\u001b[31mmust not be empty\u001b[39m\n\u001b[31mmust not be empty\"\u001b[39m\n    at C:\\Repos\\restful-booker-platform\\playwright-tests\\tests\\guest\\booking.spec.js:67:64",
                         "location": {
                           "file": "C:\\Repos\\restful-booker-platform\\playwright-tests\\tests\\guest\\booking.spec.js",
                           "column": 64,
@@ -728,25 +718,25 @@
                             "column": 64,
                             "line": 67
                           },
-                          "message": "Error: an error message should mention /email/i\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoMatch\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected pattern: \u001b[32m/email/i\u001b[39m\nReceived string:  \u001b[31m\"size must be between 3 and 30\u001b[39m\n\u001b[31mmust not be empty\u001b[39m\n\u001b[31msize must be between 11 and 21\u001b[39m\n\u001b[31mmust not be empty\u001b[39m\n\u001b[31mFirstname should not be blank\u001b[39m\n\u001b[31mLastname should not be blank\u001b[39m\n\u001b[31msize must be between 3 and 18\"\u001b[39m\n\n  65 |     const text = await page.locator('.alert').innerText();\n  66 |     for (const field of [/first ?name/i, /last ?name/i, /email/i, /phone/i]) {\n> 67 |       expect(text, `an error message should mention ${field}`).toMatch(field);\n     |                                                                ^\n  68 |     }\n  69 |   });\n  70 |\n    at C:\\Repos\\restful-booker-platform\\playwright-tests\\tests\\guest\\booking.spec.js:67:64"
+                          "message": "Error: an error message should mention /email/i\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoMatch\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected pattern: \u001b[32m/email/i\u001b[39m\nReceived string:  \u001b[31m\"Lastname should not be blank\u001b[39m\n\u001b[31mFirstname should not be blank\u001b[39m\n\u001b[31msize must be between 3 and 18\u001b[39m\n\u001b[31msize must be between 3 and 30\u001b[39m\n\u001b[31msize must be between 11 and 21\u001b[39m\n\u001b[31mmust not be empty\u001b[39m\n\u001b[31mmust not be empty\"\u001b[39m\n\n  65 |     const text = await page.locator('.alert').innerText();\n  66 |     for (const field of [/first ?name/i, /last ?name/i, /email/i, /phone/i]) {\n> 67 |       expect(text, `an error message should mention ${field}`).toMatch(field);\n     |                                                                ^\n  68 |     }\n  69 |   });\n  70 |\n    at C:\\Repos\\restful-booker-platform\\playwright-tests\\tests\\guest\\booking.spec.js:67:64"
                         }
                       ],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-22T17:27:42.135Z",
+                      "startTime": "2026-11-22T17:53:45.574Z",
                       "annotations": [
                         {
-                          "type": "fail",
-                          "description": "UI-07: messages such as \"size must be between 11 and 21\" and \"must not be empty\" do not name their field",
-                          "location": {
-                            "file": "C:\\Repos\\restful-booker-platform\\playwright-tests\\tests\\support\\known.js",
-                            "line": 6,
-                            "column": 39
-                          }
+                          "type": "known-defect",
+                          "description": "UI-07: messages such as \"size must be between 11 and 21\" and \"must not be empty\" do not name their field"
                         }
                       ],
                       "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Repos\\restful-booker-platform\\playwright-tests\\test-results\\guest-booking-Guest-bookin-1b810-ld-it-is-about-known-defect-guest\\test-failed-1.png"
+                        },
                         {
                           "name": "error-context",
                           "contentType": "text/markdown",
@@ -760,7 +750,7 @@
                       }
                     }
                   ],
-                  "status": "expected"
+                  "status": "unexpected"
                 }
               ],
               "id": "16982f29dddf46d5b7d0-b40d17532cfbf23bf64f",
@@ -770,7 +760,7 @@
             },
             {
               "title": "AT-05 booking dates that are already taken shows a clear message @known-defect",
-              "ok": true,
+              "ok": false,
               "tags": [
                 "known-defect"
               ],
@@ -779,24 +769,19 @@
                   "timeout": 60000,
                   "annotations": [
                     {
-                      "type": "fail",
-                      "description": "UI-01: the page crashes (\"This page couldn't load\") instead of showing a message",
-                      "location": {
-                        "file": "C:\\Repos\\restful-booker-platform\\playwright-tests\\tests\\support\\known.js",
-                        "line": 6,
-                        "column": 39
-                      }
+                      "type": "known-defect",
+                      "description": "UI-01: the page crashes (\"This page couldn't load\") instead of showing a message"
                     }
                   ],
-                  "expectedStatus": "failed",
+                  "expectedStatus": "passed",
                   "projectId": "guest",
                   "projectName": "guest",
                   "results": [
                     {
-                      "workerIndex": 1,
+                      "workerIndex": 3,
                       "parallelIndex": 0,
                       "status": "failed",
-                      "duration": 12731,
+                      "duration": 12649,
                       "error": {
                         "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText(/not available|unavailable|already booked|no longer available/i)\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByText(/not available|unavailable|already booked|no longer available/i) with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByText(/not available|unavailable|already booked|no longer available/i)\u001b[22m\n",
                         "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText(/not available|unavailable|already booked|no longer available/i)\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByText(/not available|unavailable|already booked|no longer available/i) with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByText(/not available|unavailable|already booked|no longer available/i)\u001b[22m\n\n    at C:\\Repos\\restful-booker-platform\\playwright-tests\\tests\\guest\\booking.spec.js:84:99",
@@ -820,19 +805,19 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-22T17:27:43.765Z",
+                      "startTime": "2026-11-22T17:53:48.452Z",
                       "annotations": [
                         {
-                          "type": "fail",
-                          "description": "UI-01: the page crashes (\"This page couldn't load\") instead of showing a message",
-                          "location": {
-                            "file": "C:\\Repos\\restful-booker-platform\\playwright-tests\\tests\\support\\known.js",
-                            "line": 6,
-                            "column": 39
-                          }
+                          "type": "known-defect",
+                          "description": "UI-01: the page crashes (\"This page couldn't load\") instead of showing a message"
                         }
                       ],
                       "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Repos\\restful-booker-platform\\playwright-tests\\test-results\\guest-booking-Guest-bookin-599eb--clear-message-known-defect-guest\\test-failed-1.png"
+                        },
                         {
                           "name": "error-context",
                           "contentType": "text/markdown",
@@ -846,7 +831,7 @@
                       }
                     }
                   ],
-                  "status": "expected"
+                  "status": "unexpected"
                 }
               ],
               "id": "16982f29dddf46d5b7d0-f4530a24fe618e416d2e",
@@ -864,7 +849,7 @@
           "specs": [
             {
               "title": "AT-06 /reservation/9999?checkin=2032-01-01&checkout=2032-01-03 shows a not-found message @known-defect",
-              "ok": true,
+              "ok": false,
               "tags": [
                 "known-defect"
               ],
@@ -873,24 +858,19 @@
                   "timeout": 60000,
                   "annotations": [
                     {
-                      "type": "fail",
-                      "description": "UI-02: the page crashes instead of showing a not-found message",
-                      "location": {
-                        "file": "C:\\Repos\\restful-booker-platform\\playwright-tests\\tests\\support\\known.js",
-                        "line": 6,
-                        "column": 39
-                      }
+                      "type": "known-defect",
+                      "description": "UI-02: the page crashes instead of showing a not-found message"
                     }
                   ],
-                  "expectedStatus": "failed",
+                  "expectedStatus": "passed",
                   "projectId": "guest",
                   "projectName": "guest",
                   "results": [
                     {
-                      "workerIndex": 1,
+                      "workerIndex": 5,
                       "parallelIndex": 0,
                       "status": "failed",
-                      "duration": 11609,
+                      "duration": 11450,
                       "error": {
                         "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText(/not found|does not exist|no longer exists/i)\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByText(/not found|does not exist|no longer exists/i) with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByText(/not found|does not exist|no longer exists/i)\u001b[22m\n",
                         "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText(/not found|does not exist|no longer exists/i)\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByText(/not found|does not exist|no longer exists/i) with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByText(/not found|does not exist|no longer exists/i)\u001b[22m\n\n    at C:\\Repos\\restful-booker-platform\\playwright-tests\\tests\\guest\\booking.spec.js:96:82",
@@ -914,19 +894,19 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-22T17:27:56.509Z",
+                      "startTime": "2026-11-22T17:54:02.726Z",
                       "annotations": [
                         {
-                          "type": "fail",
-                          "description": "UI-02: the page crashes instead of showing a not-found message",
-                          "location": {
-                            "file": "C:\\Repos\\restful-booker-platform\\playwright-tests\\tests\\support\\known.js",
-                            "line": 6,
-                            "column": 39
-                          }
+                          "type": "known-defect",
+                          "description": "UI-02: the page crashes instead of showing a not-found message"
                         }
                       ],
                       "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Repos\\restful-booker-platform\\playwright-tests\\test-results\\guest-booking-Guest-error--121c0--found-message-known-defect-guest\\test-failed-1.png"
+                        },
                         {
                           "name": "error-context",
                           "contentType": "text/markdown",
@@ -940,7 +920,7 @@
                       }
                     }
                   ],
-                  "status": "expected"
+                  "status": "unexpected"
                 }
               ],
               "id": "16982f29dddf46d5b7d0-00d50bd14eea1bc15180",
@@ -950,7 +930,7 @@
             },
             {
               "title": "AT-06 /reservation/abc shows a not-found message @known-defect",
-              "ok": true,
+              "ok": false,
               "tags": [
                 "known-defect"
               ],
@@ -959,24 +939,19 @@
                   "timeout": 60000,
                   "annotations": [
                     {
-                      "type": "fail",
-                      "description": "UI-02: the page crashes instead of showing a not-found message",
-                      "location": {
-                        "file": "C:\\Repos\\restful-booker-platform\\playwright-tests\\tests\\support\\known.js",
-                        "line": 6,
-                        "column": 39
-                      }
+                      "type": "known-defect",
+                      "description": "UI-02: the page crashes instead of showing a not-found message"
                     }
                   ],
-                  "expectedStatus": "failed",
+                  "expectedStatus": "passed",
                   "projectId": "guest",
                   "projectName": "guest",
                   "results": [
                     {
-                      "workerIndex": 1,
+                      "workerIndex": 6,
                       "parallelIndex": 0,
                       "status": "failed",
-                      "duration": 11504,
+                      "duration": 11466,
                       "error": {
                         "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText(/not found|does not exist|no longer exists/i)\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByText(/not found|does not exist|no longer exists/i) with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByText(/not found|does not exist|no longer exists/i)\u001b[22m\n",
                         "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText(/not found|does not exist|no longer exists/i)\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByText(/not found|does not exist|no longer exists/i) with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByText(/not found|does not exist|no longer exists/i)\u001b[22m\n\n    at C:\\Repos\\restful-booker-platform\\playwright-tests\\tests\\guest\\booking.spec.js:96:82",
@@ -1000,19 +975,19 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-22T17:28:08.134Z",
+                      "startTime": "2026-11-22T17:54:15.812Z",
                       "annotations": [
                         {
-                          "type": "fail",
-                          "description": "UI-02: the page crashes instead of showing a not-found message",
-                          "location": {
-                            "file": "C:\\Repos\\restful-booker-platform\\playwright-tests\\tests\\support\\known.js",
-                            "line": 6,
-                            "column": 39
-                          }
+                          "type": "known-defect",
+                          "description": "UI-02: the page crashes instead of showing a not-found message"
                         }
                       ],
                       "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Repos\\restful-booker-platform\\playwright-tests\\test-results\\guest-booking-Guest-error--2d4ef--found-message-known-defect-guest\\test-failed-1.png"
+                        },
                         {
                           "name": "error-context",
                           "contentType": "text/markdown",
@@ -1026,7 +1001,7 @@
                       }
                     }
                   ],
-                  "status": "expected"
+                  "status": "unexpected"
                 }
               ],
               "id": "16982f29dddf46d5b7d0-679c2f31e13a3a1e2d89",
@@ -1065,14 +1040,14 @@
                   "results": [
                     {
                       "workerIndex": 1,
-                      "parallelIndex": 0,
+                      "parallelIndex": 1,
                       "status": "passed",
-                      "duration": 1204,
+                      "duration": 1027,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-22T17:28:19.658Z",
+                      "startTime": "2026-11-22T17:53:46.386Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -1099,14 +1074,14 @@
                   "results": [
                     {
                       "workerIndex": 1,
-                      "parallelIndex": 0,
+                      "parallelIndex": 1,
                       "status": "passed",
-                      "duration": 1158,
+                      "duration": 1044,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-22T17:28:20.870Z",
+                      "startTime": "2026-11-22T17:53:47.418Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -1152,14 +1127,14 @@
                   "results": [
                     {
                       "workerIndex": 1,
-                      "parallelIndex": 0,
+                      "parallelIndex": 1,
                       "status": "passed",
-                      "duration": 1274,
+                      "duration": 1034,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-22T17:28:22.041Z",
+                      "startTime": "2026-11-22T17:53:48.472Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -1174,7 +1149,7 @@
             },
             {
               "title": "AT-07a searching with dates in the past is not allowed @known-defect",
-              "ok": true,
+              "ok": false,
               "tags": [
                 "known-defect"
               ],
@@ -1183,24 +1158,19 @@
                   "timeout": 60000,
                   "annotations": [
                     {
-                      "type": "fail",
-                      "description": "UI-04: past dates are accepted and rooms are offered",
-                      "location": {
-                        "file": "C:\\Repos\\restful-booker-platform\\playwright-tests\\tests\\support\\known.js",
-                        "line": 6,
-                        "column": 39
-                      }
+                      "type": "known-defect",
+                      "description": "UI-04: past dates are accepted and rooms are offered"
                     }
                   ],
-                  "expectedStatus": "failed",
+                  "expectedStatus": "passed",
                   "projectId": "guest",
                   "projectName": "guest",
                   "results": [
                     {
                       "workerIndex": 1,
-                      "parallelIndex": 0,
+                      "parallelIndex": 1,
                       "status": "failed",
-                      "duration": 1417,
+                      "duration": 1618,
                       "error": {
                         "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 5\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"/reservation/1?checkin=2020-01-01&checkout=2020-01-03\",\u001b[39m\n\u001b[31m+   \"/reservation/2?checkin=2020-01-01&checkout=2020-01-03\",\u001b[39m\n\u001b[31m+   \"/reservation/3?checkin=2020-01-01&checkout=2020-01-03\",\u001b[39m\n\u001b[31m+ ]\u001b[39m",
                         "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 5\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"/reservation/1?checkin=2020-01-01&checkout=2020-01-03\",\u001b[39m\n\u001b[31m+   \"/reservation/2?checkin=2020-01-01&checkout=2020-01-03\",\u001b[39m\n\u001b[31m+   \"/reservation/3?checkin=2020-01-01&checkout=2020-01-03\",\u001b[39m\n\u001b[31m+ ]\u001b[39m\n    at C:\\Repos\\restful-booker-platform\\playwright-tests\\tests\\guest\\home.spec.js:29:67",
@@ -1224,19 +1194,19 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-22T17:28:23.323Z",
+                      "startTime": "2026-11-22T17:53:49.513Z",
                       "annotations": [
                         {
-                          "type": "fail",
-                          "description": "UI-04: past dates are accepted and rooms are offered",
-                          "location": {
-                            "file": "C:\\Repos\\restful-booker-platform\\playwright-tests\\tests\\support\\known.js",
-                            "line": 6,
-                            "column": 39
-                          }
+                          "type": "known-defect",
+                          "description": "UI-04: past dates are accepted and rooms are offered"
                         }
                       ],
                       "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Repos\\restful-booker-platform\\playwright-tests\\test-results\\guest-home-Home-page-AT-07-9f83e-is-not-allowed-known-defect-guest\\test-failed-1.png"
+                        },
                         {
                           "name": "error-context",
                           "contentType": "text/markdown",
@@ -1250,7 +1220,7 @@
                       }
                     }
                   ],
-                  "status": "expected"
+                  "status": "unexpected"
                 }
               ],
               "id": "c0c129c1b130942e1c16-a093c796e86df2c9dfcb",
@@ -1260,7 +1230,7 @@
             },
             {
               "title": "AT-07b check-out before check-in is not allowed @known-defect",
-              "ok": true,
+              "ok": false,
               "tags": [
                 "known-defect"
               ],
@@ -1269,24 +1239,19 @@
                   "timeout": 60000,
                   "annotations": [
                     {
-                      "type": "fail",
-                      "description": "UI-04: reversed dates are accepted and rooms are offered",
-                      "location": {
-                        "file": "C:\\Repos\\restful-booker-platform\\playwright-tests\\tests\\support\\known.js",
-                        "line": 6,
-                        "column": 39
-                      }
+                      "type": "known-defect",
+                      "description": "UI-04: reversed dates are accepted and rooms are offered"
                     }
                   ],
-                  "expectedStatus": "failed",
+                  "expectedStatus": "passed",
                   "projectId": "guest",
                   "projectName": "guest",
                   "results": [
                     {
-                      "workerIndex": 1,
-                      "parallelIndex": 0,
+                      "workerIndex": 4,
+                      "parallelIndex": 1,
                       "status": "failed",
-                      "duration": 1395,
+                      "duration": 2064,
                       "error": {
                         "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 5\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"/reservation/1?checkin=2032-12-12&checkout=2032-12-10\",\u001b[39m\n\u001b[31m+   \"/reservation/2?checkin=2032-12-12&checkout=2032-12-10\",\u001b[39m\n\u001b[31m+   \"/reservation/3?checkin=2032-12-12&checkout=2032-12-10\",\u001b[39m\n\u001b[31m+ ]\u001b[39m",
                         "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 5\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"/reservation/1?checkin=2032-12-12&checkout=2032-12-10\",\u001b[39m\n\u001b[31m+   \"/reservation/2?checkin=2032-12-12&checkout=2032-12-10\",\u001b[39m\n\u001b[31m+   \"/reservation/3?checkin=2032-12-12&checkout=2032-12-10\",\u001b[39m\n\u001b[31m+ ]\u001b[39m\n    at C:\\Repos\\restful-booker-platform\\playwright-tests\\tests\\guest\\home.spec.js:39:68",
@@ -1310,19 +1275,19 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-22T17:28:24.750Z",
+                      "startTime": "2026-11-22T17:53:52.003Z",
                       "annotations": [
                         {
-                          "type": "fail",
-                          "description": "UI-04: reversed dates are accepted and rooms are offered",
-                          "location": {
-                            "file": "C:\\Repos\\restful-booker-platform\\playwright-tests\\tests\\support\\known.js",
-                            "line": 6,
-                            "column": 39
-                          }
+                          "type": "known-defect",
+                          "description": "UI-04: reversed dates are accepted and rooms are offered"
                         }
                       ],
                       "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Repos\\restful-booker-platform\\playwright-tests\\test-results\\guest-home-Home-page-AT-07-71869-is-not-allowed-known-defect-guest\\test-failed-1.png"
+                        },
                         {
                           "name": "error-context",
                           "contentType": "text/markdown",
@@ -1336,7 +1301,7 @@
                       }
                     }
                   ],
-                  "status": "expected"
+                  "status": "unexpected"
                 }
               ],
               "id": "c0c129c1b130942e1c16-ee4bbf65469cc0b293fb",
@@ -1376,15 +1341,15 @@
                   "projectName": "admin",
                   "results": [
                     {
-                      "workerIndex": 2,
+                      "workerIndex": 7,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 4685,
+                      "duration": 3256,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-22T17:28:26.640Z",
+                      "startTime": "2026-11-22T17:54:28.930Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -1399,7 +1364,7 @@
             },
             {
               "title": "AT-22 the new-booking message tells the admin which room was booked @known-defect",
-              "ok": true,
+              "ok": false,
               "tags": [
                 "known-defect"
               ],
@@ -1408,24 +1373,19 @@
                   "timeout": 60000,
                   "annotations": [
                     {
-                      "type": "fail",
-                      "description": "UI-08: the message has the guest and dates but no room number or type",
-                      "location": {
-                        "file": "C:\\Repos\\restful-booker-platform\\playwright-tests\\tests\\support\\known.js",
-                        "line": 6,
-                        "column": 39
-                      }
+                      "type": "known-defect",
+                      "description": "UI-08: the message has the guest and dates but no room number or type"
                     }
                   ],
-                  "expectedStatus": "failed",
+                  "expectedStatus": "passed",
                   "projectId": "admin",
                   "projectName": "admin",
                   "results": [
                     {
-                      "workerIndex": 2,
+                      "workerIndex": 7,
                       "parallelIndex": 0,
                       "status": "failed",
-                      "duration": 12454,
+                      "duration": 12252,
                       "error": {
                         "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText(/\\b101\\b|\\bSingle\\b/)\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByText(/\\b101\\b|\\bSingle\\b/) with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByText(/\\b101\\b|\\bSingle\\b/)\u001b[22m\n",
                         "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText(/\\b101\\b|\\bSingle\\b/)\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByText(/\\b101\\b|\\bSingle\\b/) with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByText(/\\b101\\b|\\bSingle\\b/)\u001b[22m\n\n    at C:\\Repos\\restful-booker-platform\\playwright-tests\\tests\\admin\\messages.spec.js:61:56",
@@ -1449,19 +1409,19 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-22T17:28:31.535Z",
+                      "startTime": "2026-11-22T17:54:32.284Z",
                       "annotations": [
                         {
-                          "type": "fail",
-                          "description": "UI-08: the message has the guest and dates but no room number or type",
-                          "location": {
-                            "file": "C:\\Repos\\restful-booker-platform\\playwright-tests\\tests\\support\\known.js",
-                            "line": 6,
-                            "column": 39
-                          }
+                          "type": "known-defect",
+                          "description": "UI-08: the message has the guest and dates but no room number or type"
                         }
                       ],
                       "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Repos\\restful-booker-platform\\playwright-tests\\test-results\\admin-messages-Guest-messa-12308-oom-was-booked-known-defect-admin\\test-failed-1.png"
+                        },
                         {
                           "name": "error-context",
                           "contentType": "text/markdown",
@@ -1475,7 +1435,7 @@
                       }
                     }
                   ],
-                  "status": "expected"
+                  "status": "unexpected"
                 }
               ],
               "id": "5190e2df24bdaf287376-c2d9749f48137db05d73",
@@ -1513,15 +1473,15 @@
                   "projectName": "admin",
                   "results": [
                     {
-                      "workerIndex": 2,
-                      "parallelIndex": 0,
+                      "workerIndex": 8,
+                      "parallelIndex": 1,
                       "status": "passed",
-                      "duration": 2081,
+                      "duration": 1579,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-22T17:28:44.032Z",
+                      "startTime": "2026-11-22T17:54:28.930Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -1566,15 +1526,15 @@
                   "projectName": "admin",
                   "results": [
                     {
-                      "workerIndex": 2,
-                      "parallelIndex": 0,
+                      "workerIndex": 8,
+                      "parallelIndex": 1,
                       "status": "passed",
-                      "duration": 2120,
+                      "duration": 1865,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-22T17:28:46.127Z",
+                      "startTime": "2026-11-22T17:54:30.604Z",
                       "annotations": [
                         {
                           "type": "serial",
@@ -1598,7 +1558,7 @@
             },
             {
               "title": "AT-16b a saved B&B name shows on the public site within 10 seconds @known-defect",
-              "ok": true,
+              "ok": false,
               "tags": [
                 "known-defect"
               ],
@@ -1615,24 +1575,19 @@
                       }
                     },
                     {
-                      "type": "fail",
-                      "description": "UI-09: /api/branding is cached for 60 seconds and the save does not clear it",
-                      "location": {
-                        "file": "C:\\Repos\\restful-booker-platform\\playwright-tests\\tests\\support\\known.js",
-                        "line": 6,
-                        "column": 39
-                      }
+                      "type": "known-defect",
+                      "description": "UI-09: /api/branding is cached for 60 seconds and the save does not clear it"
                     }
                   ],
-                  "expectedStatus": "failed",
+                  "expectedStatus": "passed",
                   "projectId": "admin",
                   "projectName": "admin",
                   "results": [
                     {
-                      "workerIndex": 2,
-                      "parallelIndex": 0,
+                      "workerIndex": 8,
+                      "parallelIndex": 1,
                       "status": "failed",
-                      "duration": 443,
+                      "duration": 261,
                       "error": {
                         "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m",
                         "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n    at C:\\Repos\\restful-booker-platform\\playwright-tests\\tests\\admin\\report-and-branding.spec.js:66:69",
@@ -1656,7 +1611,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-22T17:28:48.262Z",
+                      "startTime": "2026-11-22T17:54:32.477Z",
                       "annotations": [
                         {
                           "type": "serial",
@@ -1667,16 +1622,16 @@
                           }
                         },
                         {
-                          "type": "fail",
-                          "description": "UI-09: /api/branding is cached for 60 seconds and the save does not clear it",
-                          "location": {
-                            "file": "C:\\Repos\\restful-booker-platform\\playwright-tests\\tests\\support\\known.js",
-                            "line": 6,
-                            "column": 39
-                          }
+                          "type": "known-defect",
+                          "description": "UI-09: /api/branding is cached for 60 seconds and the save does not clear it"
                         }
                       ],
                       "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Repos\\restful-booker-platform\\playwright-tests\\test-results\\admin-report-and-branding--15c03-hin-10-seconds-known-defect-admin\\test-failed-1.png"
+                        },
                         {
                           "name": "error-context",
                           "contentType": "text/markdown",
@@ -1690,7 +1645,7 @@
                       }
                     }
                   ],
-                  "status": "expected"
+                  "status": "unexpected"
                 }
               ],
               "id": "112e74bde05d79aa1c21-c8179c368b69534d587f",
@@ -1717,7 +1672,7 @@
           "specs": [
             {
               "title": "AT-12 a room created by admin is listed in admin and on the public site @known-defect",
-              "ok": true,
+              "ok": false,
               "tags": [
                 "known-defect"
               ],
@@ -1726,24 +1681,19 @@
                   "timeout": 60000,
                   "annotations": [
                     {
-                      "type": "fail",
-                      "description": "UI-03: the home page shows only the first three rooms (rooms.slice(0, 3))",
-                      "location": {
-                        "file": "C:\\Repos\\restful-booker-platform\\playwright-tests\\tests\\support\\known.js",
-                        "line": 6,
-                        "column": 39
-                      }
+                      "type": "known-defect",
+                      "description": "UI-03: the home page shows only the first three rooms (rooms.slice(0, 3))"
                     }
                   ],
-                  "expectedStatus": "failed",
+                  "expectedStatus": "passed",
                   "projectId": "admin",
                   "projectName": "admin",
                   "results": [
                     {
-                      "workerIndex": 2,
-                      "parallelIndex": 0,
+                      "workerIndex": 9,
+                      "parallelIndex": 1,
                       "status": "failed",
-                      "duration": 13050,
+                      "duration": 12154,
                       "error": {
                         "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('#rooms a:has-text(\"Book now\")')\nExpected: \u001b[32m6\u001b[39m\nReceived: \u001b[31m3\u001b[39m\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" locator('#rooms a:has-text(\"Book now\")') with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('#rooms a:has-text(\"Book now\")')\u001b[22m\n\u001b[2m    23 × locator resolved to 3 elements\u001b[22m\n\u001b[2m       - unexpected value \"3\"\u001b[22m\n",
                         "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('#rooms a:has-text(\"Book now\")')\nExpected: \u001b[32m6\u001b[39m\nReceived: \u001b[31m3\u001b[39m\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" locator('#rooms a:has-text(\"Book now\")') with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('#rooms a:has-text(\"Book now\")')\u001b[22m\n\u001b[2m    23 × locator resolved to 3 elements\u001b[22m\n\u001b[2m       - unexpected value \"3\"\u001b[22m\n\n    at C:\\Repos\\restful-booker-platform\\playwright-tests\\tests\\admin\\rooms.spec.js:24:34",
@@ -1767,19 +1717,19 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-22T17:28:48.726Z",
+                      "startTime": "2026-11-22T17:54:33.629Z",
                       "annotations": [
                         {
-                          "type": "fail",
-                          "description": "UI-03: the home page shows only the first three rooms (rooms.slice(0, 3))",
-                          "location": {
-                            "file": "C:\\Repos\\restful-booker-platform\\playwright-tests\\tests\\support\\known.js",
-                            "line": 6,
-                            "column": 39
-                          }
+                          "type": "known-defect",
+                          "description": "UI-03: the home page shows only the first three rooms (rooms.slice(0, 3))"
                         }
                       ],
                       "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Repos\\restful-booker-platform\\playwright-tests\\test-results\\admin-rooms-Admin-rooms-AT-ff65d-he-public-site-known-defect-admin\\test-failed-1.png"
+                        },
                         {
                           "name": "error-context",
                           "contentType": "text/markdown",
@@ -1793,7 +1743,7 @@
                       }
                     }
                   ],
-                  "status": "expected"
+                  "status": "unexpected"
                 }
               ],
               "id": "b7d858b4385449a8b197-d9ab7115b4a973e9a815",
@@ -1814,15 +1764,15 @@
                   "projectName": "admin",
                   "results": [
                     {
-                      "workerIndex": 2,
+                      "workerIndex": 10,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 3652,
+                      "duration": 3386,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-22T17:29:01.797Z",
+                      "startTime": "2026-11-22T17:54:46.307Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -1837,7 +1787,7 @@
             },
             {
               "title": "AT-14a empty room form says what is missing @known-defect",
-              "ok": true,
+              "ok": false,
               "tags": [
                 "known-defect"
               ],
@@ -1846,24 +1796,19 @@
                   "timeout": 60000,
                   "annotations": [
                     {
-                      "type": "fail",
-                      "description": "UI-07: the only message is \"Failed to create room\"",
-                      "location": {
-                        "file": "C:\\Repos\\restful-booker-platform\\playwright-tests\\tests\\support\\known.js",
-                        "line": 6,
-                        "column": 39
-                      }
+                      "type": "known-defect",
+                      "description": "UI-07: the only message is \"Failed to create room\""
                     }
                   ],
-                  "expectedStatus": "failed",
+                  "expectedStatus": "passed",
                   "projectId": "admin",
                   "projectName": "admin",
                   "results": [
                     {
-                      "workerIndex": 2,
+                      "workerIndex": 10,
                       "parallelIndex": 0,
                       "status": "failed",
-                      "duration": 11778,
+                      "duration": 11576,
                       "error": {
                         "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.alert').first()\nExpected pattern: \u001b[32m/name/i\u001b[39m\nReceived string:  \u001b[31m\"Failed to create room\"\u001b[39m\nTimeout: 10000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('.alert').first() with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('.alert').first()\u001b[22m\n\u001b[2m    22 × locator resolved to <div class=\"alert alert-danger\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"Failed to create room\"\u001b[22m\n",
                         "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.alert').first()\nExpected pattern: \u001b[32m/name/i\u001b[39m\nReceived string:  \u001b[31m\"Failed to create room\"\u001b[39m\nTimeout: 10000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('.alert').first() with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('.alert').first()\u001b[22m\n\u001b[2m    22 × locator resolved to <div class=\"alert alert-danger\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"Failed to create room\"\u001b[22m\n\n    at C:\\Repos\\restful-booker-platform\\playwright-tests\\tests\\admin\\rooms.spec.js:51:40",
@@ -1887,19 +1832,19 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-22T17:29:05.476Z",
+                      "startTime": "2026-11-22T17:54:49.778Z",
                       "annotations": [
                         {
-                          "type": "fail",
-                          "description": "UI-07: the only message is \"Failed to create room\"",
-                          "location": {
-                            "file": "C:\\Repos\\restful-booker-platform\\playwright-tests\\tests\\support\\known.js",
-                            "line": 6,
-                            "column": 39
-                          }
+                          "type": "known-defect",
+                          "description": "UI-07: the only message is \"Failed to create room\""
                         }
                       ],
                       "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Repos\\restful-booker-platform\\playwright-tests\\test-results\\admin-rooms-Admin-rooms-AT-76880-hat-is-missing-known-defect-admin\\test-failed-1.png"
+                        },
                         {
                           "name": "error-context",
                           "contentType": "text/markdown",
@@ -1913,7 +1858,7 @@
                       }
                     }
                   ],
-                  "status": "expected"
+                  "status": "unexpected"
                 }
               ],
               "id": "b7d858b4385449a8b197-e6b84d939e97d3f61f85",
@@ -1923,7 +1868,7 @@
             },
             {
               "title": "AT-14b a decimal price says what is wrong @known-defect",
-              "ok": true,
+              "ok": false,
               "tags": [
                 "known-defect"
               ],
@@ -1932,24 +1877,19 @@
                   "timeout": 60000,
                   "annotations": [
                     {
-                      "type": "fail",
-                      "description": "UI-07: the only message is \"Failed to create room\"",
-                      "location": {
-                        "file": "C:\\Repos\\restful-booker-platform\\playwright-tests\\tests\\support\\known.js",
-                        "line": 6,
-                        "column": 39
-                      }
+                      "type": "known-defect",
+                      "description": "UI-07: the only message is \"Failed to create room\""
                     }
                   ],
-                  "expectedStatus": "failed",
+                  "expectedStatus": "passed",
                   "projectId": "admin",
                   "projectName": "admin",
                   "results": [
                     {
-                      "workerIndex": 2,
+                      "workerIndex": 11,
                       "parallelIndex": 0,
                       "status": "failed",
-                      "duration": 12436,
+                      "duration": 12274,
                       "error": {
                         "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.alert').first()\nExpected pattern: \u001b[32m/price/i\u001b[39m\nReceived string:  \u001b[31m\"Failed to create room\"\u001b[39m\nTimeout: 10000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('.alert').first() with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('.alert').first()\u001b[22m\n\u001b[2m    22 × locator resolved to <div class=\"alert alert-danger\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"Failed to create room\"\u001b[22m\n",
                         "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.alert').first()\nExpected pattern: \u001b[32m/price/i\u001b[39m\nReceived string:  \u001b[31m\"Failed to create room\"\u001b[39m\nTimeout: 10000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('.alert').first() with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('.alert').first()\u001b[22m\n\u001b[2m    22 × locator resolved to <div class=\"alert alert-danger\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"Failed to create room\"\u001b[22m\n\n    at C:\\Repos\\restful-booker-platform\\playwright-tests\\tests\\admin\\rooms.spec.js:59:40",
@@ -1973,19 +1913,19 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-22T17:29:17.274Z",
+                      "startTime": "2026-11-22T17:55:02.900Z",
                       "annotations": [
                         {
-                          "type": "fail",
-                          "description": "UI-07: the only message is \"Failed to create room\"",
-                          "location": {
-                            "file": "C:\\Repos\\restful-booker-platform\\playwright-tests\\tests\\support\\known.js",
-                            "line": 6,
-                            "column": 39
-                          }
+                          "type": "known-defect",
+                          "description": "UI-07: the only message is \"Failed to create room\""
                         }
                       ],
                       "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Repos\\restful-booker-platform\\playwright-tests\\test-results\\admin-rooms-Admin-rooms-AT-2b4e6--what-is-wrong-known-defect-admin\\test-failed-1.png"
+                        },
                         {
                           "name": "error-context",
                           "contentType": "text/markdown",
@@ -1999,7 +1939,7 @@
                       }
                     }
                   ],
-                  "status": "expected"
+                  "status": "unexpected"
                 }
               ],
               "id": "b7d858b4385449a8b197-582ea1c077659008c607",
@@ -2020,15 +1960,15 @@
                   "projectName": "admin",
                   "results": [
                     {
-                      "workerIndex": 2,
+                      "workerIndex": 12,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 1837,
+                      "duration": 1762,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-22T17:29:29.735Z",
+                      "startTime": "2026-11-22T17:55:16.821Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -2043,7 +1983,7 @@
             },
             {
               "title": "AT-23 a room number that already exists cannot be created again @known-defect",
-              "ok": true,
+              "ok": false,
               "tags": [
                 "known-defect"
               ],
@@ -2052,24 +1992,19 @@
                   "timeout": 60000,
                   "annotations": [
                     {
-                      "type": "fail",
-                      "description": "UI-10: the duplicate room is created with no error",
-                      "location": {
-                        "file": "C:\\Repos\\restful-booker-platform\\playwright-tests\\tests\\support\\known.js",
-                        "line": 6,
-                        "column": 39
-                      }
+                      "type": "known-defect",
+                      "description": "UI-10: the duplicate room is created with no error"
                     }
                   ],
-                  "expectedStatus": "failed",
+                  "expectedStatus": "passed",
                   "projectId": "admin",
                   "projectName": "admin",
                   "results": [
                     {
-                      "workerIndex": 2,
+                      "workerIndex": 12,
                       "parallelIndex": 0,
                       "status": "failed",
-                      "duration": 11811,
+                      "duration": 12435,
                       "error": {
                         "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.alert').first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" locator('.alert').first() with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('.alert').first()\u001b[22m\n",
                         "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.alert').first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" locator('.alert').first() with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('.alert').first()\u001b[22m\n\n    at C:\\Repos\\restful-booker-platform\\playwright-tests\\tests\\admin\\rooms.spec.js:83:40",
@@ -2093,19 +2028,19 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-22T17:29:31.596Z",
+                      "startTime": "2026-11-22T17:55:18.671Z",
                       "annotations": [
                         {
-                          "type": "fail",
-                          "description": "UI-10: the duplicate room is created with no error",
-                          "location": {
-                            "file": "C:\\Repos\\restful-booker-platform\\playwright-tests\\tests\\support\\known.js",
-                            "line": 6,
-                            "column": 39
-                          }
+                          "type": "known-defect",
+                          "description": "UI-10: the duplicate room is created with no error"
                         }
                       ],
                       "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Repos\\restful-booker-platform\\playwright-tests\\test-results\\admin-rooms-Admin-rooms-AT-997de--created-again-known-defect-admin\\test-failed-1.png"
+                        },
                         {
                           "name": "error-context",
                           "contentType": "text/markdown",
@@ -2119,7 +2054,7 @@
                       }
                     }
                   ],
-                  "status": "expected"
+                  "status": "unexpected"
                 }
               ],
               "id": "b7d858b4385449a8b197-62f219e8816291820632",
@@ -2129,7 +2064,7 @@
             },
             {
               "title": "AT-15 deleting a room that has a booking asks for confirmation @known-defect",
-              "ok": true,
+              "ok": false,
               "tags": [
                 "known-defect"
               ],
@@ -2138,24 +2073,19 @@
                   "timeout": 60000,
                   "annotations": [
                     {
-                      "type": "fail",
-                      "description": "UI-06: the room is deleted immediately, with no confirmation or warning",
-                      "location": {
-                        "file": "C:\\Repos\\restful-booker-platform\\playwright-tests\\tests\\support\\known.js",
-                        "line": 6,
-                        "column": 39
-                      }
+                      "type": "known-defect",
+                      "description": "UI-06: the room is deleted immediately, with no confirmation or warning"
                     }
                   ],
-                  "expectedStatus": "failed",
+                  "expectedStatus": "passed",
                   "projectId": "admin",
                   "projectName": "admin",
                   "results": [
                     {
-                      "workerIndex": 2,
+                      "workerIndex": 13,
                       "parallelIndex": 0,
                       "status": "failed",
-                      "duration": 1636,
+                      "duration": 2343,
                       "error": {
                         "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m",
                         "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n    at C:\\Repos\\restful-booker-platform\\playwright-tests\\tests\\admin\\rooms.spec.js:104:41",
@@ -2179,19 +2109,19 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-22T17:29:43.446Z",
+                      "startTime": "2026-11-22T17:55:32.739Z",
                       "annotations": [
                         {
-                          "type": "fail",
-                          "description": "UI-06: the room is deleted immediately, with no confirmation or warning",
-                          "location": {
-                            "file": "C:\\Repos\\restful-booker-platform\\playwright-tests\\tests\\support\\known.js",
-                            "line": 6,
-                            "column": 39
-                          }
+                          "type": "known-defect",
+                          "description": "UI-06: the room is deleted immediately, with no confirmation or warning"
                         }
                       ],
                       "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Repos\\restful-booker-platform\\playwright-tests\\test-results\\admin-rooms-Admin-rooms-AT-23055-r-confirmation-known-defect-admin\\test-failed-1.png"
+                        },
                         {
                           "name": "error-context",
                           "contentType": "text/markdown",
@@ -2205,7 +2135,7 @@
                       }
                     }
                   ],
-                  "status": "expected"
+                  "status": "unexpected"
                 }
               ],
               "id": "b7d858b4385449a8b197-10b4de49834dc5a57b23",
@@ -2220,11 +2150,11 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-11-22T17:27:22.621Z",
-    "duration": 142838.449,
-    "expected": 33,
+    "startTime": "2026-11-22T17:53:36.742Z",
+    "duration": 119054.515,
+    "expected": 20,
     "skipped": 0,
-    "unexpected": 0,
+    "unexpected": 13,
     "flaky": 0
   }
 }

@@ -58,7 +58,7 @@ Negative scenarios outnumber positive ones on purpose: the main flows are short 
 
 ### 4.1 Automated (Playwright) - UI first
 
-`P1` = run on every build, `K` = known defect (written to assert the correct behaviour, so it fails until fixed; tag `@known-defect`).
+`P1` = run on every build, `K` = known defect (written to assert the correct behaviour, so it fails until fixed; tag `@known-defect`). These show as failed in the report on purpose.
 
 | ID | Type | Scenario | Expected | Risk | Notes |
 |---|---|---|---|---|---|

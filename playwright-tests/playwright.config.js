@@ -11,7 +11,7 @@ module.exports = defineConfig({
   reporter: [['list'], ['html', { open: 'never' }], ['json', { outputFile: 'test-results.json' }], ['junit', { outputFile: 'test-results.xml' }]],
   use: {
     baseURL,
-    trace: 'retain-on-failure',
+    trace: 'off', // traces are large; turn on when debugging with: npx playwright test --trace retain-on-failure
     screenshot: 'only-on-failure',
   },
   projects: [

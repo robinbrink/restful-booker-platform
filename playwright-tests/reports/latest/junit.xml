@@ -1,207 +1,629 @@
-<testsuites id="" name="" tests="33" failures="0" skipped="0" errors="0" time="142.838449">
-<testsuite name="auth.setup.js" timestamp="2026-11-22T17:27:22.653Z" hostname="setup" tests="1" failures="0" skipped="0" time="1.374" errors="0">
-<testcase name="log in as admin and save the session" classname="auth.setup.js" time="1.374">
+<testsuites id="" name="" tests="33" failures="13" skipped="0" errors="0" time="119.054515">
+<testsuite name="auth.setup.js" timestamp="2026-11-22T17:53:36.778Z" hostname="setup" tests="1" failures="0" skipped="0" time="1.503" errors="0">
+<testcase name="log in as admin and save the session" classname="auth.setup.js" time="1.503">
 </testcase>
 </testsuite>
-<testsuite name="auth\login.spec.js" timestamp="2026-11-22T17:27:22.653Z" hostname="guest" tests="8" failures="0" skipped="0" time="10.529" errors="0">
-<testcase name="Admin login › AT-10a valid credentials open the rooms page @smoke" classname="auth\login.spec.js" time="2.126">
+<testsuite name="auth\login.spec.js" timestamp="2026-11-22T17:53:36.778Z" hostname="guest" tests="8" failures="0" skipped="0" time="9.197" errors="0">
+<testcase name="Admin login › AT-10a valid credentials open the rooms page @smoke" classname="auth\login.spec.js" time="2.306">
 </testcase>
-<testcase name="Admin login › AT-10b wrong password is rejected with a message" classname="auth\login.spec.js" time="1.109">
+<testcase name="Admin login › AT-10b wrong password is rejected with a message" classname="auth\login.spec.js" time="0.885">
 </testcase>
-<testcase name="Admin login › AT-10c empty username and password are rejected" classname="auth\login.spec.js" time="1.074">
+<testcase name="Admin login › AT-10c empty username and password are rejected" classname="auth\login.spec.js" time="0.937">
 </testcase>
-<testcase name="Admin access when logged out › AT-11a /admin/rooms shows the login form, not admin data @smoke" classname="auth\login.spec.js" time="1.098">
+<testcase name="Admin access when logged out › AT-11a /admin/rooms shows the login form, not admin data @smoke" classname="auth\login.spec.js" time="0.894">
 </testcase>
-<testcase name="Admin access when logged out › AT-11a /admin/message shows the login form, not admin data @smoke" classname="auth\login.spec.js" time="1.073">
+<testcase name="Admin access when logged out › AT-11a /admin/message shows the login form, not admin data @smoke" classname="auth\login.spec.js" time="0.959">
 </testcase>
-<testcase name="Admin access when logged out › AT-11a /admin/report shows the login form, not admin data @smoke" classname="auth\login.spec.js" time="1.183">
+<testcase name="Admin access when logged out › AT-11a /admin/report shows the login form, not admin data @smoke" classname="auth\login.spec.js" time="1.005">
 </testcase>
-<testcase name="Admin access when logged out › AT-11a /admin/branding shows the login form, not admin data @smoke" classname="auth\login.spec.js" time="1.095">
+<testcase name="Admin access when logged out › AT-11a /admin/branding shows the login form, not admin data @smoke" classname="auth\login.spec.js" time="0.899">
 </testcase>
-<testcase name="Admin access when logged out › AT-11b after logging out, Back does not show admin data" classname="auth\login.spec.js" time="1.771">
+<testcase name="Admin access when logged out › AT-11b after logging out, Back does not show admin data" classname="auth\login.spec.js" time="1.312">
 </testcase>
 </testsuite>
-<testsuite name="guest\booking.spec.js" timestamp="2026-11-22T17:27:22.653Z" hostname="guest" tests="7" failures="0" skipped="0" time="43.825" errors="0">
-<testcase name="Guest booking › AT-02 guest searches, books a room and sees the confirmation @smoke" classname="guest\booking.spec.js" time="3.292">
+<testsuite name="guest\booking.spec.js" timestamp="2026-11-22T17:53:36.778Z" hostname="guest" tests="7" failures="4" skipped="0" time="43.34" errors="0">
+<testcase name="Guest booking › AT-02 guest searches, books a room and sees the confirmation @smoke" classname="guest\booking.spec.js" time="3.707">
 </testcase>
-<testcase name="Guest booking › AT-03 price summary adds nights, cleaning fee and service fee" classname="guest\booking.spec.js" time="1.577">
+<testcase name="Guest booking › AT-03 price summary adds nights, cleaning fee and service fee" classname="guest\booking.spec.js" time="1.283">
 </testcase>
-<testcase name="Guest booking › AT-04 empty guest form shows a message for every field" classname="guest\booking.spec.js" time="1.495">
+<testcase name="Guest booking › AT-04 empty guest form shows a message for every field" classname="guest\booking.spec.js" time="1.453">
 </testcase>
-<testcase name="Guest booking › AT-04b every guest form message names the field it is about @known-defect" classname="guest\booking.spec.js" time="1.617">
+<testcase name="Guest booking › AT-04b every guest form message names the field it is about @known-defect" classname="guest\booking.spec.js" time="1.332">
 <properties>
-<property name="fail" value="UI-07: messages such as &quot;size must be between 11 and 21&quot; and &quot;must not be empty&quot; do not name their field">
+<property name="known-defect" value="UI-07: messages such as &quot;size must be between 11 and 21&quot; and &quot;must not be empty&quot; do not name their field">
 </property>
 </properties>
 <system-out>
 <![CDATA[
+[[ATTACHMENT|test-results\guest-booking-Guest-bookin-1b810-ld-it-is-about-known-defect-guest\test-failed-1.png]]
+
 [[ATTACHMENT|test-results\guest-booking-Guest-bookin-1b810-ld-it-is-about-known-defect-guest\error-context.md]]
 ]]>
 </system-out>
+<failure message="an error message should mention /email/i" type="expect.toMatch">
+<![CDATA[  [guest] › guest\booking.spec.js:57:3 › Guest booking › AT-04b every guest form message names the field it is about @known-defect 
+
+    Error: an error message should mention /email/i
+
+    expect(received).toMatch(expected)
+
+    Expected pattern: /email/i
+    Received string:  "Lastname should not be blank
+    Firstname should not be blank
+    size must be between 3 and 18
+    size must be between 3 and 30
+    size must be between 11 and 21
+    must not be empty
+    must not be empty"
+
+      65 |     const text = await page.locator('.alert').innerText();
+      66 |     for (const field of [/first ?name/i, /last ?name/i, /email/i, /phone/i]) {
+    > 67 |       expect(text, `an error message should mention ${field}`).toMatch(field);
+         |                                                                ^
+      68 |     }
+      69 |   });
+      70 |
+        at C:\Repos\restful-booker-platform\playwright-tests\tests\guest\booking.spec.js:67:64
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\guest-booking-Guest-bookin-1b810-ld-it-is-about-known-defect-guest\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\guest-booking-Guest-bookin-1b810-ld-it-is-about-known-defect-guest\error-context.md
+]]>
+</failure>
 </testcase>
-<testcase name="Guest booking › AT-05 booking dates that are already taken shows a clear message @known-defect" classname="guest\booking.spec.js" time="12.731">
+<testcase name="Guest booking › AT-05 booking dates that are already taken shows a clear message @known-defect" classname="guest\booking.spec.js" time="12.649">
 <properties>
-<property name="fail" value="UI-01: the page crashes (&quot;This page couldn&apos;t load&quot;) instead of showing a message">
+<property name="known-defect" value="UI-01: the page crashes (&quot;This page couldn&apos;t load&quot;) instead of showing a message">
 </property>
 </properties>
 <system-out>
 <![CDATA[
+[[ATTACHMENT|test-results\guest-booking-Guest-bookin-599eb--clear-message-known-defect-guest\test-failed-1.png]]
+
 [[ATTACHMENT|test-results\guest-booking-Guest-bookin-599eb--clear-message-known-defect-guest\error-context.md]]
 ]]>
 </system-out>
+<failure message="expect(locator).toBeVisible() failed" type="expect.toBeVisible">
+<![CDATA[  [guest] › guest\booking.spec.js:72:3 › Guest booking › AT-05 booking dates that are already taken shows a clear message @known-defect 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByText(/not available|unavailable|already booked|no longer available/i)
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByText(/not available|unavailable|already booked|no longer available/i) with timeout 10000ms
+      - waiting for getByText(/not available|unavailable|already booked|no longer available/i)
+
+
+      82 |     expect((await bookingResponse).status()).toBe(409); // the API correctly refuses the second booking
+      83 |
+    > 84 |     await expect(page.getByText(/not available|unavailable|already booked|no longer available/i)).toBeVisible();
+         |                                                                                                   ^
+      85 |     await expect(reservation.crashMessage).toHaveCount(0);
+      86 |   });
+      87 | });
+        at C:\Repos\restful-booker-platform\playwright-tests\tests\guest\booking.spec.js:84:99
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\guest-booking-Guest-bookin-599eb--clear-message-known-defect-guest\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\guest-booking-Guest-bookin-599eb--clear-message-known-defect-guest\error-context.md
+]]>
+</failure>
 </testcase>
-<testcase name="Guest error handling › AT-06 /reservation/9999?checkin=2032-01-01&amp;checkout=2032-01-03 shows a not-found message @known-defect" classname="guest\booking.spec.js" time="11.609">
+<testcase name="Guest error handling › AT-06 /reservation/9999?checkin=2032-01-01&amp;checkout=2032-01-03 shows a not-found message @known-defect" classname="guest\booking.spec.js" time="11.45">
 <properties>
-<property name="fail" value="UI-02: the page crashes instead of showing a not-found message">
+<property name="known-defect" value="UI-02: the page crashes instead of showing a not-found message">
 </property>
 </properties>
 <system-out>
 <![CDATA[
+[[ATTACHMENT|test-results\guest-booking-Guest-error--121c0--found-message-known-defect-guest\test-failed-1.png]]
+
 [[ATTACHMENT|test-results\guest-booking-Guest-error--121c0--found-message-known-defect-guest\error-context.md]]
 ]]>
 </system-out>
+<failure message="expect(locator).toBeVisible() failed" type="expect.toBeVisible">
+<![CDATA[  [guest] › guest\booking.spec.js:92:5 › Guest error handling › AT-06 /reservation/9999?checkin=2032-01-01&checkout=2032-01-03 shows a not-found message @known-defect 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByText(/not found|does not exist|no longer exists/i)
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByText(/not found|does not exist|no longer exists/i) with timeout 10000ms
+      - waiting for getByText(/not found|does not exist|no longer exists/i)
+
+
+      94 |       await page.goto(path);
+      95 |       await page.waitForLoadState('networkidle');
+    > 96 |       await expect(page.getByText(/not found|does not exist|no longer exists/i)).toBeVisible();
+         |                                                                                  ^
+      97 |       await expect(page.getByText(/couldn.t load/i)).toHaveCount(0);
+      98 |     });
+      99 |   }
+        at C:\Repos\restful-booker-platform\playwright-tests\tests\guest\booking.spec.js:96:82
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\guest-booking-Guest-error--121c0--found-message-known-defect-guest\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\guest-booking-Guest-error--121c0--found-message-known-defect-guest\error-context.md
+]]>
+</failure>
 </testcase>
-<testcase name="Guest error handling › AT-06 /reservation/abc shows a not-found message @known-defect" classname="guest\booking.spec.js" time="11.504">
+<testcase name="Guest error handling › AT-06 /reservation/abc shows a not-found message @known-defect" classname="guest\booking.spec.js" time="11.466">
 <properties>
-<property name="fail" value="UI-02: the page crashes instead of showing a not-found message">
+<property name="known-defect" value="UI-02: the page crashes instead of showing a not-found message">
 </property>
 </properties>
 <system-out>
 <![CDATA[
+[[ATTACHMENT|test-results\guest-booking-Guest-error--2d4ef--found-message-known-defect-guest\test-failed-1.png]]
+
 [[ATTACHMENT|test-results\guest-booking-Guest-error--2d4ef--found-message-known-defect-guest\error-context.md]]
 ]]>
 </system-out>
+<failure message="expect(locator).toBeVisible() failed" type="expect.toBeVisible">
+<![CDATA[  [guest] › guest\booking.spec.js:92:5 › Guest error handling › AT-06 /reservation/abc shows a not-found message @known-defect 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByText(/not found|does not exist|no longer exists/i)
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByText(/not found|does not exist|no longer exists/i) with timeout 10000ms
+      - waiting for getByText(/not found|does not exist|no longer exists/i)
+
+
+      94 |       await page.goto(path);
+      95 |       await page.waitForLoadState('networkidle');
+    > 96 |       await expect(page.getByText(/not found|does not exist|no longer exists/i)).toBeVisible();
+         |                                                                                  ^
+      97 |       await expect(page.getByText(/couldn.t load/i)).toHaveCount(0);
+      98 |     });
+      99 |   }
+        at C:\Repos\restful-booker-platform\playwright-tests\tests\guest\booking.spec.js:96:82
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\guest-booking-Guest-error--2d4ef--found-message-known-defect-guest\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\guest-booking-Guest-error--2d4ef--found-message-known-defect-guest\error-context.md
+]]>
+</failure>
 </testcase>
 </testsuite>
-<testsuite name="guest\contact.spec.js" timestamp="2026-11-22T17:27:22.653Z" hostname="guest" tests="2" failures="0" skipped="0" time="2.362" errors="0">
-<testcase name="Contact form › AT-09a empty form shows a message for every field" classname="guest\contact.spec.js" time="1.204">
+<testsuite name="guest\contact.spec.js" timestamp="2026-11-22T17:53:36.778Z" hostname="guest" tests="2" failures="0" skipped="0" time="2.071" errors="0">
+<testcase name="Contact form › AT-09a empty form shows a message for every field" classname="guest\contact.spec.js" time="1.027">
 </testcase>
-<testcase name="Contact form › AT-09b values outside the allowed format and length are rejected" classname="guest\contact.spec.js" time="1.158">
+<testcase name="Contact form › AT-09b values outside the allowed format and length are rejected" classname="guest\contact.spec.js" time="1.044">
 </testcase>
 </testsuite>
-<testsuite name="guest\home.spec.js" timestamp="2026-11-22T17:27:22.653Z" hostname="guest" tests="3" failures="0" skipped="0" time="4.086" errors="0">
-<testcase name="Home page › AT-01 home page loads with the three rooms and no errors @smoke" classname="guest\home.spec.js" time="1.274">
+<testsuite name="guest\home.spec.js" timestamp="2026-11-22T17:53:36.778Z" hostname="guest" tests="3" failures="2" skipped="0" time="4.716" errors="0">
+<testcase name="Home page › AT-01 home page loads with the three rooms and no errors @smoke" classname="guest\home.spec.js" time="1.034">
 </testcase>
-<testcase name="Home page › AT-07a searching with dates in the past is not allowed @known-defect" classname="guest\home.spec.js" time="1.417">
+<testcase name="Home page › AT-07a searching with dates in the past is not allowed @known-defect" classname="guest\home.spec.js" time="1.618">
 <properties>
-<property name="fail" value="UI-04: past dates are accepted and rooms are offered">
+<property name="known-defect" value="UI-04: past dates are accepted and rooms are offered">
 </property>
 </properties>
 <system-out>
 <![CDATA[
+[[ATTACHMENT|test-results\guest-home-Home-page-AT-07-9f83e-is-not-allowed-known-defect-guest\test-failed-1.png]]
+
 [[ATTACHMENT|test-results\guest-home-Home-page-AT-07-9f83e-is-not-allowed-known-defect-guest\error-context.md]]
 ]]>
 </system-out>
+<failure message="expect(received).toEqual(expected) // deep equality" type="expect.toEqual">
+<![CDATA[  [guest] › guest\home.spec.js:22:3 › Home page › AT-07a searching with dates in the past is not allowed @known-defect 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 5
+
+    - Array []
+    + Array [
+    +   "/reservation/1?checkin=2020-01-01&checkout=2020-01-03",
+    +   "/reservation/2?checkin=2020-01-01&checkout=2020-01-03",
+    +   "/reservation/3?checkin=2020-01-01&checkout=2020-01-03",
+    + ]
+
+      27 |
+      28 |     const hrefs = await home.bookLinkHrefs();
+    > 29 |     expect(hrefs.filter((h) => h.includes('checkin=2020-01-01'))).toEqual([]);
+         |                                                                   ^
+      30 |   });
+      31 |
+      32 |   test('AT-07b check-out before check-in is not allowed @known-defect', async ({ page }) => {
+        at C:\Repos\restful-booker-platform\playwright-tests\tests\guest\home.spec.js:29:67
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\guest-home-Home-page-AT-07-9f83e-is-not-allowed-known-defect-guest\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\guest-home-Home-page-AT-07-9f83e-is-not-allowed-known-defect-guest\error-context.md
+]]>
+</failure>
 </testcase>
-<testcase name="Home page › AT-07b check-out before check-in is not allowed @known-defect" classname="guest\home.spec.js" time="1.395">
+<testcase name="Home page › AT-07b check-out before check-in is not allowed @known-defect" classname="guest\home.spec.js" time="2.064">
 <properties>
-<property name="fail" value="UI-04: reversed dates are accepted and rooms are offered">
+<property name="known-defect" value="UI-04: reversed dates are accepted and rooms are offered">
 </property>
 </properties>
 <system-out>
 <![CDATA[
+[[ATTACHMENT|test-results\guest-home-Home-page-AT-07-71869-is-not-allowed-known-defect-guest\test-failed-1.png]]
+
 [[ATTACHMENT|test-results\guest-home-Home-page-AT-07-71869-is-not-allowed-known-defect-guest\error-context.md]]
 ]]>
 </system-out>
+<failure message="expect(received).toEqual(expected) // deep equality" type="expect.toEqual">
+<![CDATA[  [guest] › guest\home.spec.js:32:3 › Home page › AT-07b check-out before check-in is not allowed @known-defect 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 5
+
+    - Array []
+    + Array [
+    +   "/reservation/1?checkin=2032-12-12&checkout=2032-12-10",
+    +   "/reservation/2?checkin=2032-12-12&checkout=2032-12-10",
+    +   "/reservation/3?checkin=2032-12-12&checkout=2032-12-10",
+    + ]
+
+      37 |
+      38 |     const hrefs = await home.bookLinkHrefs();
+    > 39 |     expect(hrefs.filter((h) => h.includes('checkout=2032-12-10'))).toEqual([]);
+         |                                                                    ^
+      40 |   });
+      41 | });
+      42 |
+        at C:\Repos\restful-booker-platform\playwright-tests\tests\guest\home.spec.js:39:68
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\guest-home-Home-page-AT-07-71869-is-not-allowed-known-defect-guest\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\guest-home-Home-page-AT-07-71869-is-not-allowed-known-defect-guest\error-context.md
+]]>
+</failure>
 </testcase>
 </testsuite>
-<testsuite name="admin\messages.spec.js" timestamp="2026-11-22T17:27:22.653Z" hostname="admin" tests="2" failures="0" skipped="0" time="17.139" errors="0">
-<testcase name="Guest message reaches the admin › AT-08 a guest contact message appears in admin, unread until opened @smoke" classname="admin\messages.spec.js" time="4.685">
+<testsuite name="admin\messages.spec.js" timestamp="2026-11-22T17:53:36.778Z" hostname="admin" tests="2" failures="1" skipped="0" time="15.508" errors="0">
+<testcase name="Guest message reaches the admin › AT-08 a guest contact message appears in admin, unread until opened @smoke" classname="admin\messages.spec.js" time="3.256">
 </testcase>
-<testcase name="Guest message reaches the admin › AT-22 the new-booking message tells the admin which room was booked @known-defect" classname="admin\messages.spec.js" time="12.454">
+<testcase name="Guest message reaches the admin › AT-22 the new-booking message tells the admin which room was booked @known-defect" classname="admin\messages.spec.js" time="12.252">
 <properties>
-<property name="fail" value="UI-08: the message has the guest and dates but no room number or type">
+<property name="known-defect" value="UI-08: the message has the guest and dates but no room number or type">
 </property>
 </properties>
 <system-out>
 <![CDATA[
+[[ATTACHMENT|test-results\admin-messages-Guest-messa-12308-oom-was-booked-known-defect-admin\test-failed-1.png]]
+
 [[ATTACHMENT|test-results\admin-messages-Guest-messa-12308-oom-was-booked-known-defect-admin\error-context.md]]
 ]]>
 </system-out>
+<failure message="expect(locator).toBeVisible() failed" type="expect.toBeVisible">
+<![CDATA[  [admin] › admin\messages.spec.js:51:3 › Guest message reaches the admin › AT-22 the new-booking message tells the admin which room was booked @known-defect 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByText(/\b101\b|\bSingle\b/)
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByText(/\b101\b|\bSingle\b/) with timeout 10000ms
+      - waiting for getByText(/\b101\b|\bSingle\b/)
+
+
+      59 |     await expect(page.getByText('You have a new booking from')).toBeVisible();
+      60 |     await expect(page.getByText(`${checkin} to ${checkout}`)).toBeVisible(); // the dates are there
+    > 61 |     await expect(page.getByText(/\b101\b|\bSingle\b/)).toBeVisible(); // the room should be too
+         |                                                        ^
+      62 |   });
+      63 | });
+      64 |
+        at C:\Repos\restful-booker-platform\playwright-tests\tests\admin\messages.spec.js:61:56
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\admin-messages-Guest-messa-12308-oom-was-booked-known-defect-admin\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\admin-messages-Guest-messa-12308-oom-was-booked-known-defect-admin\error-context.md
+]]>
+</failure>
 </testcase>
 </testsuite>
-<testsuite name="admin\report-and-branding.spec.js" timestamp="2026-11-22T17:27:22.653Z" hostname="admin" tests="3" failures="0" skipped="0" time="4.644" errors="0">
-<testcase name="Admin report › AT-17 a guest booking appears on the admin report" classname="admin\report-and-branding.spec.js" time="2.081">
+<testsuite name="admin\report-and-branding.spec.js" timestamp="2026-11-22T17:53:36.778Z" hostname="admin" tests="3" failures="1" skipped="0" time="3.705" errors="0">
+<testcase name="Admin report › AT-17 a guest booking appears on the admin report" classname="admin\report-and-branding.spec.js" time="1.579">
 </testcase>
-<testcase name="Admin branding › AT-16a branding saves when only the B&amp;B name is changed @known-defect" classname="admin\report-and-branding.spec.js" time="2.12">
+<testcase name="Admin branding › AT-16a branding saves when only the B&amp;B name is changed @known-defect" classname="admin\report-and-branding.spec.js" time="1.865">
 <properties>
 <property name="serial" value="">
 </property>
 </properties>
 </testcase>
-<testcase name="Admin branding › AT-16b a saved B&amp;B name shows on the public site within 10 seconds @known-defect" classname="admin\report-and-branding.spec.js" time="0.443">
+<testcase name="Admin branding › AT-16b a saved B&amp;B name shows on the public site within 10 seconds @known-defect" classname="admin\report-and-branding.spec.js" time="0.261">
 <properties>
 <property name="serial" value="">
 </property>
-<property name="fail" value="UI-09: /api/branding is cached for 60 seconds and the save does not clear it">
+<property name="known-defect" value="UI-09: /api/branding is cached for 60 seconds and the save does not clear it">
 </property>
 </properties>
 <system-out>
 <![CDATA[
+[[ATTACHMENT|test-results\admin-report-and-branding--15c03-hin-10-seconds-known-defect-admin\test-failed-1.png]]
+
 [[ATTACHMENT|test-results\admin-report-and-branding--15c03-hin-10-seconds-known-defect-admin\error-context.md]]
 ]]>
 </system-out>
+<failure message="expect(received).toBe(expected) // Object.is equality" type="expect.toBe">
+<![CDATA[  [admin] › admin\report-and-branding.spec.js:62:3 › Admin branding › AT-16b a saved B&B name shows on the public site within 10 seconds @known-defect 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: true
+    Received: false
+
+      64 |     const newName = `Autotest B&B ${tag()}`;
+      65 |     // Save through the API so this test does not depend on UI-05
+    > 66 |     expect((await setBrandingName(request, newName, baseURL)).ok()).toBe(true);
+         |                                                                     ^
+      67 |
+      68 |     const guest = await browser.newContext({ storageState: { cookies: [], origins: [] } });
+      69 |     const home = await guest.newPage();
+        at C:\Repos\restful-booker-platform\playwright-tests\tests\admin\report-and-branding.spec.js:66:69
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\admin-report-and-branding--15c03-hin-10-seconds-known-defect-admin\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\admin-report-and-branding--15c03-hin-10-seconds-known-defect-admin\error-context.md
+]]>
+</failure>
 </testcase>
 </testsuite>
-<testsuite name="admin\rooms.spec.js" timestamp="2026-11-22T17:27:22.653Z" hostname="admin" tests="7" failures="0" skipped="0" time="56.2" errors="0">
-<testcase name="Admin rooms › AT-12 a room created by admin is listed in admin and on the public site @known-defect" classname="admin\rooms.spec.js" time="13.05">
+<testsuite name="admin\rooms.spec.js" timestamp="2026-11-22T17:53:36.778Z" hostname="admin" tests="7" failures="5" skipped="0" time="55.93" errors="0">
+<testcase name="Admin rooms › AT-12 a room created by admin is listed in admin and on the public site @known-defect" classname="admin\rooms.spec.js" time="12.154">
 <properties>
-<property name="fail" value="UI-03: the home page shows only the first three rooms (rooms.slice(0, 3))">
+<property name="known-defect" value="UI-03: the home page shows only the first three rooms (rooms.slice(0, 3))">
 </property>
 </properties>
 <system-out>
 <![CDATA[
+[[ATTACHMENT|test-results\admin-rooms-Admin-rooms-AT-ff65d-he-public-site-known-defect-admin\test-failed-1.png]]
+
 [[ATTACHMENT|test-results\admin-rooms-Admin-rooms-AT-ff65d-he-public-site-known-defect-admin\error-context.md]]
 ]]>
 </system-out>
+<failure message="expect(locator).toHaveCount(expected) failed" type="expect.toHaveCount">
+<![CDATA[  [admin] › admin\rooms.spec.js:14:3 › Admin rooms › AT-12 a room created by admin is listed in admin and on the public site @known-defect 
+
+    Error: expect(locator).toHaveCount(expected) failed
+
+    Locator:  locator('#rooms a:has-text("Book now")')
+    Expected: 6
+    Received: 3
+    Timeout:  10000ms
+
+    Call log:
+      - Expect "toHaveCount" locator('#rooms a:has-text("Book now")') with timeout 10000ms
+      - waiting for locator('#rooms a:has-text("Book now")')
+        23 × locator resolved to 3 elements
+           - unexpected value "3"
+
+
+      22 |     const home = new HomePage(page);
+      23 |     await home.goto();
+    > 24 |     await expect(home.bookLinks).toHaveCount(total); // public side should list every room
+         |                                  ^
+      25 |   });
+      26 |
+      27 |   test('AT-13 editing a room price and description persists', async ({ page, request }) => {
+        at C:\Repos\restful-booker-platform\playwright-tests\tests\admin\rooms.spec.js:24:34
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\admin-rooms-Admin-rooms-AT-ff65d-he-public-site-known-defect-admin\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\admin-rooms-Admin-rooms-AT-ff65d-he-public-site-known-defect-admin\error-context.md
+]]>
+</failure>
 </testcase>
-<testcase name="Admin rooms › AT-13 editing a room price and description persists" classname="admin\rooms.spec.js" time="3.652">
+<testcase name="Admin rooms › AT-13 editing a room price and description persists" classname="admin\rooms.spec.js" time="3.386">
 </testcase>
-<testcase name="Admin rooms › AT-14a empty room form says what is missing @known-defect" classname="admin\rooms.spec.js" time="11.778">
+<testcase name="Admin rooms › AT-14a empty room form says what is missing @known-defect" classname="admin\rooms.spec.js" time="11.576">
 <properties>
-<property name="fail" value="UI-07: the only message is &quot;Failed to create room&quot;">
+<property name="known-defect" value="UI-07: the only message is &quot;Failed to create room&quot;">
 </property>
 </properties>
 <system-out>
 <![CDATA[
+[[ATTACHMENT|test-results\admin-rooms-Admin-rooms-AT-76880-hat-is-missing-known-defect-admin\test-failed-1.png]]
+
 [[ATTACHMENT|test-results\admin-rooms-Admin-rooms-AT-76880-hat-is-missing-known-defect-admin\error-context.md]]
 ]]>
 </system-out>
+<failure message="expect(locator).toContainText(expected) failed" type="expect.toContainText">
+<![CDATA[  [admin] › admin\rooms.spec.js:46:3 › Admin rooms › AT-14a empty room form says what is missing @known-defect 
+
+    Error: expect(locator).toContainText(expected) failed
+
+    Locator: locator('.alert').first()
+    Expected pattern: /name/i
+    Received string:  "Failed to create room"
+    Timeout: 10000ms
+
+    Call log:
+      - Expect "toContainText" locator('.alert').first() with timeout 10000ms
+      - waiting for locator('.alert').first()
+        22 × locator resolved to <div class="alert alert-danger">…</div>
+           - unexpected value "Failed to create room"
+
+
+      49 |     await rooms.goto();
+      50 |     await rooms.createButton.click();
+    > 51 |     await expect(rooms.alerts.first()).toContainText(/name/i);
+         |                                        ^
+      52 |   });
+      53 |
+      54 |   test('AT-14b a decimal price says what is wrong @known-defect', async ({ page }) => {
+        at C:\Repos\restful-booker-platform\playwright-tests\tests\admin\rooms.spec.js:51:40
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\admin-rooms-Admin-rooms-AT-76880-hat-is-missing-known-defect-admin\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\admin-rooms-Admin-rooms-AT-76880-hat-is-missing-known-defect-admin\error-context.md
+]]>
+</failure>
 </testcase>
-<testcase name="Admin rooms › AT-14b a decimal price says what is wrong @known-defect" classname="admin\rooms.spec.js" time="12.436">
+<testcase name="Admin rooms › AT-14b a decimal price says what is wrong @known-defect" classname="admin\rooms.spec.js" time="12.274">
 <properties>
-<property name="fail" value="UI-07: the only message is &quot;Failed to create room&quot;">
+<property name="known-defect" value="UI-07: the only message is &quot;Failed to create room&quot;">
 </property>
 </properties>
 <system-out>
 <![CDATA[
+[[ATTACHMENT|test-results\admin-rooms-Admin-rooms-AT-2b4e6--what-is-wrong-known-defect-admin\test-failed-1.png]]
+
 [[ATTACHMENT|test-results\admin-rooms-Admin-rooms-AT-2b4e6--what-is-wrong-known-defect-admin\error-context.md]]
 ]]>
 </system-out>
+<failure message="expect(locator).toContainText(expected) failed" type="expect.toContainText">
+<![CDATA[  [admin] › admin\rooms.spec.js:54:3 › Admin rooms › AT-14b a decimal price says what is wrong @known-defect 
+
+    Error: expect(locator).toContainText(expected) failed
+
+    Locator: locator('.alert').first()
+    Expected pattern: /price/i
+    Received string:  "Failed to create room"
+    Timeout: 10000ms
+
+    Call log:
+      - Expect "toContainText" locator('.alert').first() with timeout 10000ms
+      - waiting for locator('.alert').first()
+        22 × locator resolved to <div class="alert alert-danger">…</div>
+           - unexpected value "Failed to create room"
+
+
+      57 |     await rooms.goto();
+      58 |     await rooms.create({ name: roomName, price: '99.99' });
+    > 59 |     await expect(rooms.alerts.first()).toContainText(/price/i);
+         |                                        ^
+      60 |   });
+      61 |
+      62 |   test('AT-14c price outside 1 to 999 is rejected', async ({ page }) => {
+        at C:\Repos\restful-booker-platform\playwright-tests\tests\admin\rooms.spec.js:59:40
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\admin-rooms-Admin-rooms-AT-2b4e6--what-is-wrong-known-defect-admin\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\admin-rooms-Admin-rooms-AT-2b4e6--what-is-wrong-known-defect-admin\error-context.md
+]]>
+</failure>
 </testcase>
-<testcase name="Admin rooms › AT-14c price outside 1 to 999 is rejected" classname="admin\rooms.spec.js" time="1.837">
+<testcase name="Admin rooms › AT-14c price outside 1 to 999 is rejected" classname="admin\rooms.spec.js" time="1.762">
 </testcase>
-<testcase name="Admin rooms › AT-23 a room number that already exists cannot be created again @known-defect" classname="admin\rooms.spec.js" time="11.811">
+<testcase name="Admin rooms › AT-23 a room number that already exists cannot be created again @known-defect" classname="admin\rooms.spec.js" time="12.435">
 <properties>
-<property name="fail" value="UI-10: the duplicate room is created with no error">
+<property name="known-defect" value="UI-10: the duplicate room is created with no error">
 </property>
 </properties>
 <system-out>
 <![CDATA[
+[[ATTACHMENT|test-results\admin-rooms-Admin-rooms-AT-997de--created-again-known-defect-admin\test-failed-1.png]]
+
 [[ATTACHMENT|test-results\admin-rooms-Admin-rooms-AT-997de--created-again-known-defect-admin\error-context.md]]
 ]]>
 </system-out>
+<failure message="expect(locator).toBeVisible() failed" type="expect.toBeVisible">
+<![CDATA[  [admin] › admin\rooms.spec.js:73:3 › Admin rooms › AT-23 a room number that already exists cannot be created again @known-defect 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: locator('.alert').first()
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" locator('.alert').first() with timeout 10000ms
+      - waiting for locator('.alert').first()
+
+
+      81 |     await rooms.create({ name: roomName, price: 90 });
+      82 |
+    > 83 |     await expect(rooms.alerts.first()).toBeVisible();
+         |                                        ^
+      84 |     const sameName = (await getRooms(request)).filter((r) => r.roomName === roomName);
+      85 |     expect(sameName).toHaveLength(1);
+      86 |   });
+        at C:\Repos\restful-booker-platform\playwright-tests\tests\admin\rooms.spec.js:83:40
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\admin-rooms-Admin-rooms-AT-997de--created-again-known-defect-admin\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\admin-rooms-Admin-rooms-AT-997de--created-again-known-defect-admin\error-context.md
+]]>
+</failure>
 </testcase>
-<testcase name="Admin rooms › AT-15 deleting a room that has a booking asks for confirmation @known-defect" classname="admin\rooms.spec.js" time="1.636">
+<testcase name="Admin rooms › AT-15 deleting a room that has a booking asks for confirmation @known-defect" classname="admin\rooms.spec.js" time="2.343">
 <properties>
-<property name="fail" value="UI-06: the room is deleted immediately, with no confirmation or warning">
+<property name="known-defect" value="UI-06: the room is deleted immediately, with no confirmation or warning">
 </property>
 </properties>
 <system-out>
 <![CDATA[
+[[ATTACHMENT|test-results\admin-rooms-Admin-rooms-AT-23055-r-confirmation-known-defect-admin\test-failed-1.png]]
+
 [[ATTACHMENT|test-results\admin-rooms-Admin-rooms-AT-23055-r-confirmation-known-defect-admin\error-context.md]]
 ]]>
 </system-out>
+<failure message="expect(received).toBe(expected) // Object.is equality" type="expect.toBe">
+<![CDATA[  [admin] › admin\rooms.spec.js:89:3 › Admin rooms › AT-15 deleting a room that has a booking asks for confirmation @known-defect 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: true
+    Received: false
+
+      102 |
+      103 |     const inPageConfirm = await page.getByText(/are you sure|confirm|has bookings/i).isVisible().catch(() => false);
+    > 104 |     expect(dialogSeen || inPageConfirm).toBe(true);
+          |                                         ^
+      105 |     await expect(rooms.row(roomName)).toBeVisible(); // still there until the admin confirms
+      106 |   });
+      107 | });
+        at C:\Repos\restful-booker-platform\playwright-tests\tests\admin\rooms.spec.js:104:41
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\admin-rooms-Admin-rooms-AT-23055-r-confirmation-known-defect-admin\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\admin-rooms-Admin-rooms-AT-23055-r-confirmation-known-defect-admin\error-context.md
+]]>
+</failure>
 </testcase>
 </testsuite>
 </testsuites>
