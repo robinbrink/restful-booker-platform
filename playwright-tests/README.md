@@ -52,7 +52,9 @@ Make sure the platform is running first.
 
 ```
 npm test                       # run all tests, headless
-npx playwright test --headed   # watch the browser
+npm run test:ui                 # Playwright UI mode: a runner with time-travel snapshots, like the Cypress runner
+npm run test:headed             # watch the browser, one test at a time
+npx playwright test --debug     # step through a test with the Inspector
 npx playwright test --grep @smoke        # the quick smoke pack
 npx playwright test --project=guest    # guest and login tests only
 SHOW_DEFECTS=1 npx playwright test --grep @known-defect   # show the real failures behind the known defects

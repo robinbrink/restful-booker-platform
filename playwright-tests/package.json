@@ -8,7 +8,9 @@
     "test:smoke": "playwright test --grep @smoke",
     "report": "playwright show-report",
     "report:summary": "node scripts/summary.js",
-    "report:publish": "node scripts/publish-report.js"
+    "report:publish": "node scripts/publish-report.js",
+    "test:ui": "playwright test --ui",
+    "test:headed": "playwright test --headed --workers=1"
   },
   "keywords": [],
   "author": "",
