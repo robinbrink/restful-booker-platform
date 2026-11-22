@@ -138,7 +138,7 @@ Full detail, steps and expected behaviour are in [BUGS.md](BUGS.md). UI findings
 - A second booking for dates that are already taken is refused by the system (UI-01 is about how the page shows that refusal).
 - Booking confirmation shows the correct dates, and a guest booking creates an admin notification message.
 - Contact form validation shows clear, field-specific messages (the reservation form does not: see UI-07).
-- Script and markup typed into the contact form, booking names and room names is shown as text; nothing ran in the browser.
+- Script and markup typed into the contact form, booking names and room names are shown as text; nothing ran in the browser.
 - Login failures give one generic message, and admin pages show the login form when you are not logged in.
 
 ## 6. Test data and environment

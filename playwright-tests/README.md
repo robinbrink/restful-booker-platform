@@ -2,6 +2,8 @@
 
 Automated checks and test documentation for the Shady Meadows B&B booking platform, written as a guest and as an admin.
 
+My thought process in this submission was to manually explore the website, documenting any bugs found. I used Playwright to demonstrate the automation process with a report for the results. I also wanted to have the defects as automated tests to show that with the implemented fix, these should pass and could then be worked into the automation suite.
+
 | Document | What it contains |
 |---|---|
 | [TEST_PLAN.md](TEST_PLAN.md) | Risk assessment, positive and negative scenarios and why they were prioritised, automated and manual test cases, non-functional tests to consider, findings |
@@ -11,8 +13,9 @@ Automated checks and test documentation for the Shady Meadows B&B booking platfo
 
 ## Use of AI assistance
 
-Claude (Anthropic's AI assistant, used through Claude Code) was used to assist with this assignment: mainly with drafting the Playwright tests, and the formatting the test plan, bug report and this README. I tested the website myself to confirm that the tests are valid and that the defects described in [BUGS.md](BUGS.md) are real. I then reviewed and expanded on Claude's work to ensure the quality. 
-AI is a tool to assist us in our jobs, but QA's are still required to maintain the quality of the systems.
+Claude (Anthropic's AI assistant, used through Claude Code) was used to assist with this assignment: mainly with drafting the Playwright tests, and formatting the test plan, bug report and this README. I tested the website myself to confirm that the tests are valid and that the defects described in [BUGS.md](BUGS.md) are real. I then reviewed and expanded on Claude's work to ensure quality.
+
+AI is a tool to assist us in our jobs, but QAs are still required to maintain the quality of the systems.
 
 ## Prerequisites
 
@@ -52,7 +55,7 @@ Make sure the platform is running first.
 
 ```
 npm test                       # run all tests, headless
-npm run test:ui                 # Playwright UI mode: a runner with time-travel snapshots, like the Cypress runner
+npm run test:ui                 # Playwright UI mode: a runner with time-travel snapshots
 npm run test:headed             # watch the browser, one test at a time
 npx playwright test --debug     # step through a test with the Inspector
 npx playwright test --grep @smoke        # the quick smoke pack
@@ -85,9 +88,9 @@ See [TEST_PLAN.md](TEST_PLAN.md). In short: the platform was tested as a guest a
 
 Ten are written up in [BUGS.md](BUGS.md), all found and reproducible in the browser. The most serious are:
 
-- booking dates that are already taken crash the page instead of showing a message (UI-01)
-- the room page crashes for an unknown or deleted room (UI-02)
-- the public home page shows only the first three available rooms, so rooms an admin adds are usually hidden (UI-03)
+- Booking dates that are already taken crash the page instead of showing a message (UI-01)
+- The room page crashes for an unknown or deleted room (UI-02)
+- The public home page shows only the first three available rooms, so rooms an admin adds are usually hidden (UI-03)
 
 ## Assumptions
 
