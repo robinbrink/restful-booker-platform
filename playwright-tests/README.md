@@ -67,7 +67,9 @@ After a run:
 
 - **Interactive report:** `npm run report` opens the HTML report (`playwright-report/`) with steps, screenshots and traces for failures.
 - **Committed report from a real run:** [reports/latest/](reports/latest/) holds the HTML report (`html/index.html`, open it directly in a browser), a JUnit XML file (`junit.xml`), the raw JSON results and the written summary. You can read a real run without executing anything. Trace files are not included, since passing tests do not keep them.
-- **Written summary:** `npm run report:summary` turns the run's `test-results.json` into [TEST_RESULTS.md](TEST_RESULTS.md): counts, each known defect with its bug id and reason, and the passing tests. The copy in this folder is from the latest run.
+
+  **The published run:** 22 November 2026, 17:27 UTC, 2 minutes 23 seconds, made with `npm run test:headed` (a visible Chromium browser, one test at a time) against the platform running locally. 33 tests: 20 passed, 13 known defects failed as expected, 0 unexpected failures, 0 flaky.
+- **Written summary:** `npm run report:summary` turns the run's `test-results.json` into [TEST_RESULTS.md](TEST_RESULTS.md): counts, each known defect with its bug id and reason, and the passing tests. The copy in this folder is from the published run above.
 
 To refresh the committed copy after a run, use `npm run report:publish`.
 

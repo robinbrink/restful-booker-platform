@@ -1,7 +1,7 @@
 # Test results: latest run
 
-Run on 2026-11-22 17:16 UTC, 107 seconds, Chromium, against http://localhost:3003.
-Generated from `test-results.json` by `npm run report:summary`. The full interactive report is in `playwright-report/` (`npm run report`).
+Run on 2026-11-22 17:27 UTC, 143 seconds, Chromium, against http://localhost:3003.
+Generated from `test-results.json` by `npm run report:summary`. The full HTML report of the published run is [reports/latest/html/index.html](reports/latest/html/index.html); after a local run, `npm run report` opens the newest one.
 
 ## Summary
 
@@ -39,26 +39,26 @@ Each test asserts the correct behaviour and fails today. When a defect is fixed 
 
 | Test | Scenario | Project | Time |
 |---|---|---|---|
-|  | log in as admin and save the session | setup | 3.8s |
-| AT-10a | valid credentials open the rooms page (smoke) | guest | 4.7s |
-| AT-10b | wrong password is rejected with a message | guest | 0.9s |
-| AT-10c | empty username and password are rejected | guest | 0.9s |
-| AT-11a | /admin/rooms shows the login form, not admin data (smoke) | guest | 0.9s |
-| AT-11a | /admin/message shows the login form, not admin data (smoke) | guest | 1.0s |
-| AT-11a | /admin/report shows the login form, not admin data (smoke) | guest | 0.9s |
-| AT-11a | /admin/branding shows the login form, not admin data (smoke) | guest | 1.0s |
-| AT-11b | after logging out, Back does not show admin data | guest | 1.4s |
-| AT-02 | guest searches, books a room and sees the confirmation (smoke) | guest | 3.1s |
-| AT-03 | price summary adds nights, cleaning fee and service fee | guest | 1.3s |
-| AT-04 | empty guest form shows a message for every field | guest | 1.4s |
-| AT-09a | empty form shows a message for every field | guest | 1.0s |
+|  | log in as admin and save the session | setup | 1.4s |
+| AT-10a | valid credentials open the rooms page (smoke) | guest | 2.1s |
+| AT-10b | wrong password is rejected with a message | guest | 1.1s |
+| AT-10c | empty username and password are rejected | guest | 1.1s |
+| AT-11a | /admin/rooms shows the login form, not admin data (smoke) | guest | 1.1s |
+| AT-11a | /admin/message shows the login form, not admin data (smoke) | guest | 1.1s |
+| AT-11a | /admin/report shows the login form, not admin data (smoke) | guest | 1.2s |
+| AT-11a | /admin/branding shows the login form, not admin data (smoke) | guest | 1.1s |
+| AT-11b | after logging out, Back does not show admin data | guest | 1.8s |
+| AT-02 | guest searches, books a room and sees the confirmation (smoke) | guest | 3.3s |
+| AT-03 | price summary adds nights, cleaning fee and service fee | guest | 1.6s |
+| AT-04 | empty guest form shows a message for every field | guest | 1.5s |
+| AT-09a | empty form shows a message for every field | guest | 1.2s |
 | AT-09b | values outside the allowed format and length are rejected | guest | 1.2s |
-| AT-01 | home page loads with the three rooms and no errors (smoke) | guest | 0.9s |
-| AT-08 | a guest contact message appears in admin, unread until opened (smoke) | admin | 2.7s |
-| AT-17 | a guest booking appears on the admin report | admin | 1.6s |
-| AT-16a | branding saves when only the B&B name is changed | admin | 1.4s |
-| AT-13 | editing a room price and description persists | admin | 2.8s |
-| AT-14c | price outside 1 to 999 is rejected | admin | 1.9s |
+| AT-01 | home page loads with the three rooms and no errors (smoke) | guest | 1.3s |
+| AT-08 | a guest contact message appears in admin, unread until opened (smoke) | admin | 4.7s |
+| AT-17 | a guest booking appears on the admin report | admin | 2.1s |
+| AT-16a | branding saves when only the B&B name is changed | admin | 2.1s |
+| AT-13 | editing a room price and description persists | admin | 3.7s |
+| AT-14c | price outside 1 to 999 is rejected | admin | 1.8s |
 
 ## Notes
 

@@ -39,7 +39,7 @@ const idOf = (t) => (t.match(/^(AT-\d+[a-z]?)/) || [])[1] || '';
 let md = `# Test results: latest run
 
 Run on ${when.toISOString().replace('T', ' ').slice(0, 16)} UTC, ${secs} seconds, Chromium, against ${process.env.BASE_URL || 'http://localhost:3003'}.
-Generated from \`test-results.json\` by \`npm run report:summary\`. The full interactive report is in \`playwright-report/\` (\`npm run report\`).
+Generated from \`test-results.json\` by \`npm run report:summary\`. The full HTML report of the published run is [reports/latest/html/index.html](reports/latest/html/index.html); after a local run, \`npm run report\` opens the newest one.
 
 ## Summary
 
