@@ -28,7 +28,7 @@
 >    This takes about 2 minutes. `npm run test:smoke` runs a 10-second smoke pack.
 > 4. **Read the result.** `npm run report` opens the HTML report, and `npm run report:summary` rewrites `TEST_RESULTS.md`.
 >
-> **What a good run looks like:** 42 tests "passed": 23 are normal passes, and 19 are tests for known defects that assert the *correct* behaviour and are marked as expected failures, so they show as `x`. Each names its bug id (for example UI-01). They turn red when the defect is fixed. See `playwright-tests/README.md` for how to show the real failure behind each one.
+> **What a good run looks like:** 33 tests "passed": 20 are normal passes, and 13 are tests for known defects that assert the *correct* behaviour and are marked as expected failures, so they show as `x`. Each names its bug id (for example UI-01). They turn red when the defect is fixed. See `playwright-tests/README.md` for how to show the real failure behind each one.
 >
 > Note: `build_locally.cmd` finishes by running the platform's own Java end-to-end suite, which adds a few extra rooms and messages. The services use in-memory databases, so restarting them restores the original data.
 

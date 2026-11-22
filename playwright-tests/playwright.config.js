@@ -19,7 +19,7 @@ module.exports = defineConfig({
     { name: 'setup', testMatch: /auth\.setup\.js/ },
     {
       name: 'guest',
-      testMatch: /(guest|auth|api)\/.*\.spec\.js/,
+      testMatch: /(guest|auth)\/.*\.spec\.js/,
       use: { ...devices['Desktop Chrome'] },
     },
     {

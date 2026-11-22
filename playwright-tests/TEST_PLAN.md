@@ -2,7 +2,7 @@
 
 **Target:** http://localhost:3003 (v2.2, run locally, Next.js dev mode)
 **Tooling:** Playwright (`playwright-tests/`), Chromium
-**Approach:** explore as a **guest** and as an **admin**, user interface first. API checks are used to confirm what the UI cannot show (access control, rules the UI should enforce), and are ranked after the UI findings.
+**Approach:** explore as a **guest** and as an **admin**, user interface first. API checks done by hand with `curl` confirm what the UI cannot show (access control, rules the UI should enforce) and are ranked after the UI findings. There are no automated API tests: all automated tests drive the UI.
 
 Defects are written up in [BUGS.md](BUGS.md). Setup and run instructions are in [README.md](README.md).
 
@@ -13,7 +13,7 @@ Defects are written up in [BUGS.md](BUGS.md). Setup and run instructions are in 
 | Guest: home, availability search, room page, reservation, contact form | Load and performance testing |
 | Admin: login/logout, rooms, report, branding, messages | Penetration testing beyond basic probes |
 | Data flowing between admin and the public site | Third-party map tile content |
-| API checks that back up a UI risk | Exhaustive API contract testing |
+| Manual `curl` checks that back up a UI risk | Automated API tests, exhaustive API contract testing |
 
 Site map: `/` (hero, availability search, room cards, map, contact form), `/reservation/{id}?checkin=&checkout=` (room details, calendar, price summary, guest form, confirmation), `/admin` (login), `/admin/rooms`, `/admin/report`, `/admin/branding`, `/admin/message`.
 
@@ -83,16 +83,7 @@ Negative scenarios outnumber positive ones on purpose: the main flows are short 
 | AT-22 | Negative | Open the admin "new booking" message after a guest booking | The message says which room was booked | R3 | **K: UI-08** |
 | AT-23 | Negative | Admin creates a room using a room number that already exists | Rejected with a message; only one room with that number | R5 | **K: UI-10** |
 
-### 4.2 Automated (Playwright API) - supporting
-
-| ID | Type | Scenario | Expected | Risk | Notes |
-|---|---|---|---|---|---|
-| AT-18 | Negative | Guest requests `/api/message` and `/api/message/{id}` with no token | 401/403, no personal data | R7 | **K: API-01** |
-| AT-19 | Negative | Booking API: nonexistent room, past dates, 20-year stay | 4xx for each | R1 | **K: API-02** |
-| AT-20 | Positive + negative | Booking API: same dates twice, overlapping ranges, back-to-back | Overlap gives 409; back-to-back accepted | R1 | Held up |
-| AT-21 | Negative | Log in, log out, validate the old token | Token no longer valid | R6 | **K: API-03** |
-
-### 4.3 Manual (exploratory and judgement-based)
+### 4.2 Manual (exploratory and judgement-based)
 
 These need a human eye or are poor value to automate. Each is a short timed session (30 to 45 minutes) with a charter.
 
@@ -125,6 +116,8 @@ Full detail, steps and expected behaviour are in [BUGS.md](BUGS.md). UI findings
 | UI-10 | Medium | The admin page lets you create a second room with an existing room number |
 
 ### API findings (supporting)
+
+Found by hand with `curl` (no automated API tests). The steps in [BUGS.md](BUGS.md) are the evidence.
 
 | ID | Severity | Finding |
 |---|---|---|

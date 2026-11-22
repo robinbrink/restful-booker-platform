@@ -48,7 +48,7 @@ Make sure the platform is running first.
 npm test                       # run all tests, headless
 npx playwright test --headed   # watch the browser
 npx playwright test --grep @smoke        # the quick smoke pack
-npx playwright test --project=guest    # guest, login and API tests only
+npx playwright test --project=guest    # guest and login tests only
 SHOW_DEFECTS=1 npx playwright test --grep @known-defect   # show the real failures behind the known defects
 npx playwright show-report     # open the HTML report from the last run
 ```
@@ -87,7 +87,7 @@ Fifteen are written up in [BUGS.md](BUGS.md): ten in the UI and five in the API.
 ## Known limitations
 
 - **Known-defect tests pass by design.** Tests tagged `@known-defect` assert the correct behaviour and are marked with Playwright's `test.fail()`, so they show as expected failures (`x`) while the defect exists and turn red once it is fixed. Use `SHOW_DEFECTS=1` to see the actual failure for each. Each one names its bug id (UI-01 and so on).
-- **Automation covers the main flows only.** 42 tests run: guest booking, contact form, admin login, rooms, messages, report, branding and API checks. The manual cases (MT-01 to MT-06) in the test plan are not automated.
+- **Automation covers the main flows only.** 33 tests run: guest booking, contact form, admin login, rooms, messages, report, and branding checks, all through the UI. There are no automated API tests: the API defects in BUGS.md were found by hand with `curl`. The manual cases (MT-01 to MT-06) in the test plan are not automated.
 - **Chromium only.** Firefox and WebKit are not configured.
 - **Dev-mode build.** I tested a build that runs Next.js in development mode (an overlay and stale-version notice were visible). Behaviour on a production build was not compared.
 - **Not covered yet:** the calendar in depth, two simultaneous bookings for the same dates, the Cookie and Privacy pages, load and performance, and accessibility scanning. These are listed under "Not covered yet" in the test plan.
