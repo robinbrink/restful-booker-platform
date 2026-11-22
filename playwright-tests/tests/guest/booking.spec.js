@@ -47,11 +47,25 @@ test.describe('Guest booking', () => {
     await reservation.openGuestForm();
     await reservation.submit();
 
-    const alerts = page.locator('.alert');
-    await expect(alerts).toContainText(/Firstname should not be blank/i);
-    await expect(alerts).toContainText(/Lastname should not be blank/i);
-    await expect(alerts).toContainText(/size must be between 11 and 21/i); // phone
+    // The form is not submitted and errors are shown (their wording is checked in AT-04b)
+    await expect(page.locator('.alert')).toBeVisible();
+    await expect(page.locator('.alert')).toContainText(/Firstname should not be blank/i);
     await expect(page.getByText('Booking Confirmed')).toHaveCount(0);
+  });
+
+  // UI-07: messages are unlabelled, in one box, in a different order to the form
+  test('AT-04b every guest form message names the field it is about @known-defect', async ({ page }) => {
+    knownDefect(test, 'UI-07: messages such as "size must be between 11 and 21" and "must not be empty" do not name their field');
+    const { checkin, checkout } = futureRange(2);
+    const reservation = new ReservationPage(page);
+    await reservation.goto(ROOM, checkin, checkout);
+    await reservation.openGuestForm();
+    await reservation.submit();
+
+    const text = await page.locator('.alert').innerText();
+    for (const field of [/first ?name/i, /last ?name/i, /email/i, /phone/i]) {
+      expect(text, `an error message should mention ${field}`).toMatch(field);
+    }
   });
 
   // UI-01: a second booking for taken dates crashes the page

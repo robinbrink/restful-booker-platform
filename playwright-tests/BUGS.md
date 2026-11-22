@@ -12,7 +12,7 @@ Severity is my judgement: **High** = a guest or admin hits a broken journey, or 
 | UI-04 | Medium | Past, reversed and invalid dates are accepted and produce negative or NaN totals |
 | UI-05 | Medium | Branding cannot be saved as shipped |
 | UI-06 | Medium | Room delete has no confirmation and breaks the guest page when bookings exist |
-| UI-07 | Low | Admin room errors are vague |
+| UI-07 | Low | Validation messages in the admin room form and the guest booking form are vague and badly formatted |
 | UI-08 | Medium | The "new booking" message sent to the admin does not say which room was booked |
 | UI-09 | Low | Branding changes take up to a minute to show on the public site |
 | UI-10 | Medium | The admin page lets you create a second room with an existing room number |
@@ -93,16 +93,24 @@ All steps assume the app is running at http://localhost:3003.
 **Actual:** the room disappears immediately with no confirmation and no warning that it has bookings. The room's reservation page then crashes (UI-02). Through the API the room's bookings are still returned for that room id, and `GET /api/room/{id}` returns 500.
 **Expected:** a confirmation step that mentions existing bookings, and either blocking the delete or handling the bookings; a deleted room should be a clean "not found".
 
-### UI-07 (Low): Admin room errors are vague
+### UI-07 (Low): Validation messages in the admin room form and the guest booking form are vague and badly formatted
 
-**Steps:** on **Rooms**, click **Create** with the form empty; then try price `99.99`, `abc`, `-5`, `100000`; then edit a room and set the price to `0` and click **Update**.
+**Steps**
+1. Guest booking form: open `http://localhost:3003/reservation/1?checkin=2033-05-10&checkout=2033-05-12`, click **Reserve Now** to show the guest form, then click **Reserve Now** again with the form empty. Then try first name `Jo`, last name `Li`, email `nope`, phone `123`.
+2. Admin room form: on **Rooms**, click **Create** with the form empty; then try price `99.99`, `abc`, `-5`, `100000`; then edit a room, set the price to `0` and click **Update**.
 
-**Actual:**
-- empty form, `99.99` and `abc` all show only "Failed to create room"
-- `-5` shows "must be greater than or equal to 1" and `100000` shows "must be less than or equal to 999" (no field name)
-- editing the price to `0` shows "Failed to update room"
+**Actual (guest booking form)**
+- All the errors appear together in one box, in an order that does not match the form, for example: "Lastname should not be blank / size must be between 3 and 18 / size must be between 3 and 30 / size must be between 11 and 21 / must not be empty / Firstname should not be blank / must not be empty".
+- Some messages name the field ("Lastname should not be blank") but most do not: "size must be between 3 and 18", "size must be between 3 and 30" and "size must be between 11 and 21" do not say which field they are about, and "must not be empty" appears twice with no field.
+- No input is highlighted, and the form has placeholders but no labels, so a guest cannot tell which field each message is about.
+- For the short values, the message "size must be between 3 and 18" is the first name rule, "3 and 30" is the last name rule and "11 and 21" is the phone rule, but nothing says so.
 
-**Expected:** messages that name the field and the rule, as the contact and reservation forms do (for example "Room name must be set", "Price must be a whole number between 1 and 999").
+**Actual (admin room form)**
+- Empty form, `99.99` and `abc` all show only "Failed to create room".
+- `-5` shows "must be greater than or equal to 1" and `100000` shows "must be less than or equal to 999" (no field name).
+- Editing the price to `0` shows "Failed to update room".
+
+**Expected:** each message names the field and the rule, is shown next to its field or in the same order as the form, and the invalid field is highlighted. For example "First name must be between 3 and 18 characters", "Phone must be between 11 and 21 characters", "Room name must be set", "Price must be a whole number between 1 and 999". The contact form already does this well ("Subject must be between 5 and 100 characters"), so the booking and room forms should match it.
 
 ### UI-08 (Medium): The "new booking" message sent to the admin does not say which room was booked
 

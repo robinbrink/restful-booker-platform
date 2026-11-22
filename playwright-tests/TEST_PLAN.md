@@ -65,7 +65,8 @@ Negative scenarios outnumber positive ones on purpose: the main flows are short 
 | AT-01 | Positive | Home page loads | Title, heading, three room cards, no console errors | R1 | P1 smoke |
 | AT-02 | Positive | Guest books a room: search, open room, enter details, reserve | "Booking Confirmed" with the chosen dates | R1 | P1 |
 | AT-03 | Positive | Price summary for a 3-night stay | nights x rate + £25 cleaning + £15 service = shown total | R4 | |
-| AT-04 | Negative | Reserve with an empty guest form | Field-level messages for first name, last name, email, phone | R1 | P1 |
+| AT-04 | Negative | Reserve with an empty guest form | The form is not submitted and error messages are shown | R1 | P1 |
+| AT-04b | Negative | Reserve with an empty guest form, read the messages | Each message names its field (first name, last name, email, phone) | R1 | **K: UI-07** |
 | AT-05 | Negative | Book the same room and dates a second time | A clear "not available" message; page stays usable | R1 | **K: UI-01** |
 | AT-06 | Negative | Open `/reservation/9999`, `/reservation/abc` | A not-found message, not a crashed page | R2 | **K: UI-02** |
 | AT-07 | Negative | Search with a past date, or check-out before check-in | Rejected or corrected; no negative-night price | R4 | **K: UI-04** |
@@ -118,7 +119,7 @@ Full detail, steps and expected behaviour are in [BUGS.md](BUGS.md). UI findings
 | UI-04 | Medium | Past, reversed and invalid dates are accepted and flow into the room page, which shows negative totals ("£100 x -4 nights, £-400") or "NaN" |
 | UI-05 | Medium | Branding cannot be saved as shipped: the seeded logo URL fails the form's own validation, so any edit is rejected |
 | UI-06 | Medium | Deleting a room has no confirmation, works even when it has bookings, and then guests hit a crashed page for that room |
-| UI-07 | Low | Admin room errors are vague: "Failed to create room" or "Failed to update room" for price 99.99, text, 0 or an empty form; other messages have no field name |
+| UI-07 | Low | Validation messages are vague: the guest booking form shows unlabelled messages ("size must be between 3 and 18", "must not be empty") in one box in a different order to the form; the admin room form says only "Failed to create room" for several different mistakes |
 | UI-08 | Medium | The "new booking" message sent to the admin gives the guest and dates but not which room was booked |
 | UI-09 | Low | Branding changes take up to a minute to show on the public site (cached for 60 seconds, not cleared on save) |
 | UI-10 | Medium | The admin page lets you create a second room with an existing room number |

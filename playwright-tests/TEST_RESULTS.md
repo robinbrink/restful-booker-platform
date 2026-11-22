@@ -1,15 +1,15 @@
 # Test results: latest run
 
-Run on 2026-11-22 15:26 UTC, 106 seconds, Chromium, against http://localhost:3003.
+Run on 2026-11-22 16:33 UTC, 109 seconds, Chromium, against http://localhost:3003.
 Generated from `test-results.json` by `npm run report:summary`. The full interactive report is in `playwright-report/` (`npm run report`).
 
 ## Summary
 
 | | Count |
 |---|---|
-| Tests run | 41 |
+| Tests run | 42 |
 | Passed (behaviour works as expected) | 23 |
-| Known defects (assert correct behaviour, fail as expected) | 18 |
+| Known defects (assert correct behaviour, fail as expected) | 19 |
 | Unexpected failures | 0 |
 | Flaky (passed on retry) | 0 |
 
@@ -27,6 +27,7 @@ Each test asserts the correct behaviour and fails today. When a defect is fixed 
 | AT-19b | booking dates in the past are refused | API-02 | returns 201 for dates in the past |
 | AT-19c | a 20-year stay is refused | API-02 | returns 201 for a 20-year stay |
 | AT-21 | a token stops working after logout | API-03 | the logout route is a stub, so the token stays valid |
+| AT-04b | every guest form message names the field it is about | UI-07 | messages such as "size must be between 11 and 21" and "must not be empty" do not name their field |
 | AT-05 | booking dates that are already taken shows a clear message | UI-01 | the page crashes ("This page couldn't load") instead of showing a message |
 | AT-06 | /reservation/9999?checkin=2032-01-01&checkout=2032-01-03 shows a not-found message | UI-02 | the page crashes instead of showing a not-found message |
 | AT-06 | /reservation/abc shows a not-found message | UI-02 | the page crashes instead of showing a not-found message |
@@ -44,29 +45,29 @@ Each test asserts the correct behaviour and fails today. When a defect is fixed 
 
 | Test | Scenario | Project | Time |
 |---|---|---|---|
-|  | log in as admin and save the session | setup | 1.5s |
+|  | log in as admin and save the session | setup | 1.1s |
 | AT-18c | guest cannot read bookings, the report, or change rooms and branding | guest | 0.1s |
 | AT-20 | overlapping dates are refused, back-to-back stays are allowed | guest | 0.5s |
-| AT-19d | impossible and badly formatted dates are refused | guest | 0.4s |
+| AT-19d | impossible and badly formatted dates are refused | guest | 0.5s |
 | AT-10a | valid credentials open the rooms page (smoke) | guest | 1.9s |
 | AT-10b | wrong password is rejected with a message | guest | 0.9s |
 | AT-10c | empty username and password are rejected | guest | 1.0s |
 | AT-11a | /admin/rooms shows the login form, not admin data (smoke) | guest | 0.9s |
-| AT-11a | /admin/message shows the login form, not admin data (smoke) | guest | 0.9s |
-| AT-11a | /admin/report shows the login form, not admin data (smoke) | guest | 1.1s |
-| AT-11a | /admin/branding shows the login form, not admin data (smoke) | guest | 1.0s |
+| AT-11a | /admin/message shows the login form, not admin data (smoke) | guest | 1.1s |
+| AT-11a | /admin/report shows the login form, not admin data (smoke) | guest | 0.9s |
+| AT-11a | /admin/branding shows the login form, not admin data (smoke) | guest | 0.9s |
 | AT-11b | after logging out, Back does not show admin data | guest | 1.4s |
-| AT-02 | guest searches, books a room and sees the confirmation (smoke) | guest | 2.9s |
-| AT-03 | price summary adds nights, cleaning fee and service fee | guest | 1.4s |
-| AT-04 | empty guest form shows a message for every field | guest | 1.4s |
+| AT-02 | guest searches, books a room and sees the confirmation (smoke) | guest | 3.0s |
+| AT-03 | price summary adds nights, cleaning fee and service fee | guest | 1.5s |
+| AT-04 | empty guest form shows a message for every field | guest | 1.5s |
 | AT-09a | empty form shows a message for every field | guest | 1.1s |
 | AT-09b | values outside the allowed format and length are rejected | guest | 1.1s |
 | AT-01 | home page loads with the three rooms and no errors (smoke) | guest | 1.1s |
-| AT-08 | a guest contact message appears in admin, unread until opened (smoke) | admin | 3.0s |
-| AT-17 | a guest booking appears on the admin report | admin | 1.8s |
-| AT-16a | branding saves when only the B&B name is changed | admin | 1.8s |
-| AT-13 | editing a room price and description persists | admin | 3.3s |
-| AT-14c | price outside 1 to 999 is rejected | admin | 2.2s |
+| AT-08 | a guest contact message appears in admin, unread until opened (smoke) | admin | 3.3s |
+| AT-17 | a guest booking appears on the admin report | admin | 1.9s |
+| AT-16a | branding saves when only the B&B name is changed | admin | 2.0s |
+| AT-13 | editing a room price and description persists | admin | 3.2s |
+| AT-14c | price outside 1 to 999 is rejected | admin | 2.0s |
 
 ## Notes
 
